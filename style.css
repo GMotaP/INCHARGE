@@ -1,0 +1,111 @@
+/* Reset e base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Cabeçalho */
+h1 {
+  text-align: center;
+  background-color: #ff585b;
+  color: white;
+  padding: 20px;
+  font-size: 24px;
+}
+
+/* Layout */
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* Legenda */
+.legend {
+  min-width: 200px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+.legend h2 {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #ff585b;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+.legend-color {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+/* Locais */
+.locations-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  flex: 1;
+}
+
+.city-column {
+  border: 1px solid red;
+  box-shadow: 1px 1px 10px gray;
+  padding: 40px;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.city-column h2 {
+  margin-bottom: 20px;
+  color: red;
+}
+.titleCidade {
+  text-transform: uppercase;
+}
+.containerInfo {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+.chargerInfo {
+  padding: 15px;
+  background-color: green;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+    padding: 10px;
+  }
+  .locations-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .legend {
+    width: 100%;
+  }
+}
