@@ -54,6 +54,11 @@ function createLocationColumn(cityName, keys, data) {
       containerInfo.className = "containerInfo";
 
       data[key].forEach((charger) => {
+        const link = document.createElement("a");
+        link.href = `https://incharge.app/now/${key}/${charger.plug}`;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+
         const chargerDiv = document.createElement("div");
         chargerDiv.className = "chargerInfo";
         chargerDiv.textContent = `Plug ${charger.plug}`;
@@ -61,7 +66,9 @@ function createLocationColumn(cityName, keys, data) {
         if (charger.online === 0) {
           chargerDiv.style.opacity = "0.5";
         }
-        containerInfo.appendChild(chargerDiv);
+
+        link.appendChild(chargerDiv);
+        containerInfo.appendChild(link);
       });
 
       cityDiv.appendChild(containerInfo);
