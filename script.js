@@ -1,6 +1,7 @@
-// Atualização do script.js com correções e barra de atualização automática
+// Atualização do script.js com horário da última atualização e suporte ao modo escuro
 
 const locationsContainer = document.getElementById("locations");
+const updateTimeElement = document.getElementById("last-update");
 
 const saoJose = ["inc250", "inc251", "inc252"];
 const tresCoracoes = ["inc234", "inc235", "inc236"];
@@ -73,8 +74,17 @@ function createLocationColumn(cityName, keys, data) {
   locationsContainer.appendChild(cityDiv);
 }
 
+function atualizarHorario() {
+  const agora = new Date();
+  const hora = agora.toLocaleTimeString("pt-BR", { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  const data = agora.toLocaleDateString("pt-BR");
+  if (updateTimeElement) {
+    updateTimeElement.textContent = `Última atualização: ${data} às ${hora}`;
+  }
+}
+
 async function getAllData() {
-  locationsContainer.innerHTML = ""; // Limpa antes de recriar
+  locationsContainer.innerHTML = "";
 
   const urls = [
     "inc250", "inc251", "inc252",
@@ -100,7 +110,9 @@ async function getAllData() {
   locations.forEach((loc) => {
     createLocationColumn(loc.name, loc.keys, data);
   });
+
+  atualizarHorario();
 }
 
 getAllData();
-setInterval(getAllData, 30000); // Atualiza a cada 30 segundos
+setInterval(getAllData, 30000);
