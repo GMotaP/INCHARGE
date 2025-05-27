@@ -8,6 +8,26 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f5f5f5;
   color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Modo escuro */
+body.dark {
+  background-color: #121212;
+  color: #eee;
+}
+body.dark .city-column {
+  border-color: #555;
+  box-shadow: 1px 1px 10px #000;
+}
+body.dark .legend {
+  background: #1e1e1e;
+  color: #eee;
+  border-color: #444;
+}
+body.dark .chargerInfo {
+  color: #000;
+  font-weight: bold;
 }
 
 /* Cabeçalho */
@@ -17,6 +37,17 @@ h1 {
   color: white;
   padding: 20px;
   font-size: 24px;
+}
+
+#toggle-theme {
+  display: block;
+  margin: 10px auto;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
 }
 
 /* Layout */
