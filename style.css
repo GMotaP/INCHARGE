@@ -130,12 +130,17 @@ h1 {
     flex-direction: column;
     padding: 10px;
   }
+
   .locations-container {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 10px;
+    justify-content: center;
   }
-  .legend {
+
+  .city-column {
     width: 100%;
+    max-width: 100%;
   }
 }
 
