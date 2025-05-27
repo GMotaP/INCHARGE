@@ -6,14 +6,14 @@ const updateTimeElement = document.getElementById("last-update");
 const saoJose = ["inc250", "inc251", "inc252"];
 const tresCoracoes = ["inc234", "inc235", "inc236"];
 const carmopolis = ["inc237", "inc238", "inc239"];
-const inCharge = ["inc241"];
+const incharge = ["inc241"];
 const aparecida = ["inc247", "inc248", "inc249"];
 
 const locations = [
   { name: "São José", keys: saoJose },
   { name: "Três Corações", keys: tresCoracoes },
   { name: "Carmópolis", keys: carmopolis },
-  { name: "InCharge", keys: inCharge },
+  { name: "INCHARGE", keys: incharge },
   { name: "Aparecida", keys: aparecida },
 ];
 
