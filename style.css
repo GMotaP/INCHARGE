@@ -8,26 +8,6 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f5f5f5;
   color: #333;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-/* Modo escuro */
-body.dark {
-  background-color: #121212;
-  color: #eee;
-}
-body.dark .city-column {
-  border-color: #555;
-  box-shadow: 1px 1px 10px #000;
-}
-body.dark .legend {
-  background: #1e1e1e;
-  color: #eee;
-  border-color: #444;
-}
-body.dark .chargerInfo {
-  color: #000;
-  font-weight: bold;
 }
 
 /* Cabeçalho */
@@ -37,17 +17,6 @@ h1 {
   color: white;
   padding: 20px;
   font-size: 24px;
-}
-
-#toggle-theme {
-  display: block;
-  margin: 10px auto;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 5px;
-  background-color: #333;
-  color: #fff;
-  cursor: pointer;
 }
 
 /* Layout */
@@ -117,6 +86,8 @@ h1 {
   display: flex;
   gap: 30px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .chargerInfo {
   padding: 15px;
@@ -124,6 +95,22 @@ h1 {
   border-radius: 10px;
   color: white;
   font-weight: bold;
+  text-align: center;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Links dos plugs */
+.containerInfo a {
+  text-decoration: none;
+}
+
+.containerInfo a .chargerInfo {
+  color: white;
+  display: block;
 }
 
 /* Responsivo */
