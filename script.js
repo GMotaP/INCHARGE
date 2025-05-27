@@ -1,23 +1,22 @@
-// Atualização do script.js com horário da última atualização e suporte ao modo escuro
-
 const locationsContainer = document.getElementById("locations");
 const updateTimeElement = document.getElementById("last-update");
 
 const saoJose = ["inc250", "inc251", "inc252"];
 const tresCoracoes = ["inc234", "inc235", "inc236"];
 const carmopolis = ["inc237", "inc238", "inc239"];
-const incharge = ["inc241"];
+const inCharge = ["inc241"];
 const aparecida = ["inc247", "inc248", "inc249"];
 
 const locations = [
   { name: "São José", keys: saoJose },
   { name: "Três Corações", keys: tresCoracoes },
   { name: "Carmópolis", keys: carmopolis },
-  { name: "INCHARGE", keys: incharge },
+  { name: "InCharge", keys: inCharge },
   { name: "Aparecida", keys: aparecida },
 ];
 
-function getStatusColor(status) {
+function getStatusColor(status, online) {
+  if (online === 0) return "black";
   switch (status) {
     case "Available":
       return "#4caf50";
@@ -27,8 +26,6 @@ function getStatusColor(status) {
       return "#FFFF00";
     case "Charging":
       return "#FF585B";
-    case "Offline":
-      return "black";
     default:
       return "#808080";
   }
@@ -60,8 +57,8 @@ function createLocationColumn(cityName, keys, data) {
         const chargerDiv = document.createElement("div");
         chargerDiv.className = "chargerInfo";
         chargerDiv.textContent = `Plug ${charger.plug}`;
-        chargerDiv.style.backgroundColor = getStatusColor(charger.status);
-        if (charger.status === "Offline") {
+        chargerDiv.style.backgroundColor = getStatusColor(charger.status, charger.online);
+        if (charger.online === 0) {
           chargerDiv.style.opacity = "0.5";
         }
         containerInfo.appendChild(chargerDiv);
