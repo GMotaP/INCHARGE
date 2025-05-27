@@ -1,15 +1,19 @@
+// Atualização do script.js com correções e barra de atualização automática
+
 const locationsContainer = document.getElementById("locations");
 
 const saoJose = ["inc250", "inc251", "inc252"];
 const tresCoracoes = ["inc234", "inc235", "inc236"];
 const carmopolis = ["inc237", "inc238", "inc239"];
 const inCharge = ["inc241"];
+const aparecida = ["inc247", "inc248", "inc249"];
 
 const locations = [
   { name: "São José", keys: saoJose },
   { name: "Três Corações", keys: tresCoracoes },
   { name: "Carmópolis", keys: carmopolis },
   { name: "InCharge", keys: inCharge },
+  { name: "Aparecida", keys: aparecida },
 ];
 
 function getStatusColor(status) {
@@ -22,6 +26,8 @@ function getStatusColor(status) {
       return "#FFFF00";
     case "Charging":
       return "#FF585B";
+    case "Offline":
+      return "black";
     default:
       return "#808080";
   }
@@ -68,27 +74,21 @@ function createLocationColumn(cityName, keys, data) {
 }
 
 async function getAllData() {
+  locationsContainer.innerHTML = ""; // Limpa antes de recriar
+
   const urls = [
-    { key: "inc250", url: "https://api.incharge.app/api/v2/now/inc250" },
-    { key: "inc251", url: "https://api.incharge.app/api/v2/now/inc251" },
-    { key: "inc252", url: "https://api.incharge.app/api/v2/now/inc252" },
-    { key: "inc234", url: "https://api.incharge.app/api/v2/now/inc234" },
-    { key: "inc235", url: "https://api.incharge.app/api/v2/now/inc235" },
-    { key: "inc236", url: "https://api.incharge.app/api/v2/now/inc236" },
-    { key: "inc237", url: "https://api.incharge.app/api/v2/now/inc237" },
-    { key: "inc238", url: "https://api.incharge.app/api/v2/now/inc238" },
-    { key: "inc239", url: "https://api.incharge.app/api/v2/now/inc239" },
-    { key: "inc241", url: "https://api.incharge.app/api/v2/now/inc241" },
-    { key: "inc241", url: "https://api.incharge.app/api/v2/now/inc247" },
-    { key: "inc241", url: "https://api.incharge.app/api/v2/now/inc248" },
-    { key: "inc241", url: "https://api.incharge.app/api/v2/now/inc249" },
-  ];
+    "inc250", "inc251", "inc252",
+    "inc234", "inc235", "inc236",
+    "inc237", "inc238", "inc239",
+    "inc241", "inc247", "inc248", "inc249"
+  ].map((key) => ({ key, url: `https://api.incharge.app/api/v2/now/${key}` }));
 
   const responses = await Promise.all(
     urls.map((item) =>
       fetch(item.url)
         .then((res) => res.json())
         .then((result) => ({ key: item.key, data: result }))
+        .catch(() => ({ key: item.key, data: [] }))
     )
   );
 
@@ -103,3 +103,4 @@ async function getAllData() {
 }
 
 getAllData();
+setInterval(getAllData, 30000); // Atualiza a cada 30 segundos
