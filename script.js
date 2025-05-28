@@ -11,8 +11,8 @@ const locations = [
   { name: "São José", keys: saoJose },
   { name: "Três Corações", keys: tresCoracoes },
   { name: "Carmópolis", keys: carmopolis },
-  { name: "InCharge", keys: inCharge },
   { name: "Aparecida", keys: aparecida },
+  { name: "INCHARGE", keys: INCHARGE },
 ];
 
 function getStatusColor(status, online) {
@@ -94,7 +94,7 @@ async function getAllData() {
     "inc250", "inc251", "inc252",
     "inc234", "inc235", "inc236",
     "inc237", "inc238", "inc239",
-    "inc241", "inc247", "inc248", "inc249"
+    "inc247", "inc248", "inc249", "inc241"
   ].map((key) => ({ key, url: `https://api.incharge.app/api/v2/now/${key}` }));
 
   const responses = await Promise.all(
