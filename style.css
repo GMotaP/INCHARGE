@@ -124,6 +124,11 @@ h1 {
   display: block;
 }
 
+/* Forçar a INCHARGE para nova linha */
+.city-column:nth-child(5) {
+  flex-basis: 100%;
+}
+
 /* Responsivo */
 @media (max-width: 768px) {
   .main-container {
@@ -134,12 +139,12 @@ h1 {
   .locations-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 10px;
+    gap: 15px;
     justify-content: center;
   }
 
   .city-column {
-    width: 100%;
+    width: auto;
     max-width: 100%;
   }
 }
@@ -148,7 +153,8 @@ h1 {
   .chargerInfo {
     width: 60px;
     height: 60px;
-    font-size: 12px;
-    padding: 10px;
+    font-size: 11px;
+    padding: 8px;
+    margin: 5px;
   }
 }
