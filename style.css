@@ -125,7 +125,7 @@ h1 {
   display: block;
 }
 
-/* Forçar a INCHARGE para nova linha */
+/* Ajustar layout para permitir 5 colunas lado a lado */
 .city-column:nth-child(5) {
-  flex-basis: 100%;
+  flex-basis: auto;
 }
