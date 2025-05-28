@@ -8,11 +8,11 @@ const inCharge = ["inc241"];
 const aparecida = ["inc247", "inc248", "inc249"];
 
 const locations = [
-  { name: "São José", keys: saoJose },
-  { name: "Três Corações", keys: tresCoracoes },
-  { name: "Carmópolis", keys: carmopolis },
-  { name: "Aparecida", keys: aparecida },
-  { name: "INCHARGE", keys: inCharge },
+  { name: "São José dos Campos - SP", keys: saoJose },
+  { name: "Três Corações - MG", keys: tresCoracoes },
+  { name: "Carmópolis de Minas - MG", keys: carmopolis },
+  { name: "Aparecida do Norte - SP", keys: aparecida },
+  { name: "Santa Rita do Sapucaí - MG", keys: inCharge },
 ];
 
 function getStatusColor(status, online) {
