@@ -12,7 +12,7 @@ const locations = [
   { name: "Três Corações", keys: tresCoracoes },
   { name: "Carmópolis", keys: carmopolis },
   { name: "Aparecida", keys: aparecida },
-  { name: "INCHARGE", keys: InCharge },
+  { name: "INCHARGE", keys: inCharge },
 ];
 
 function getStatusColor(status, online) {
