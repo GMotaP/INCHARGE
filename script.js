@@ -6,12 +6,14 @@ const tresCoracoes = ["inc234", "inc235", "inc236"];
 const carmopolis = ["inc237", "inc238", "inc239"];
 const inCharge = ["inc241"];
 const aparecida = ["inc247", "inc248", "inc249"];
+const agl = ["p4c006"];
 
 const locations = [
+  { name: "AGL - Teste", keys: agl, link: "" },
   { name: "São José dos Campos - SP", keys: saoJose, link: "https://www.google.com.br/maps/place/PIT+-+Parque+de+Inova%C3%A7%C3%A3o+Tecnol%C3%B3gica+S%C3%A3o+Jos%C3%A9+dos+Campos/@-23.1554384,-45.7907483,283m/data=!3m1!1e3!4m6!3m5!1s0x94cc4c345d24cd69:0x3baf325177feb8a0!8m2!3d-23.1553507!4d-45.7902501!16s%2Fg%2F1tgk1rrr?hl=pt-BR&entry=ttu&g_ep=EgoyMDI1MDUyMS4wIKXMDSoASAFQAw%3D%3D" },
   { name: "Três Corações - MG", keys: tresCoracoes, link: "https://www.google.com.br/maps/place/Esta%C3%A7%C3%A3o+de+recarga+de+ve%C3%ADculos+el%C3%A9tricos/@-21.6057204,-45.2401907,52m/data=!3m1!1e3!4m14!1m7!3m6!1s0x94cac2ccf68e4623:0x4d860ff3d588f9e4!2sVenda+do+Chico+-+Restaurante+e+Lanchonete!8m2!3d-21.6052765!4d-45.2404193!16s%2Fg%2F1q2w4kfg_!3m5!1s0x94cac3e88d55128f:0x6be48d796db9931!8m2!3d-21.6056066!4d-45.2401596!16s%2Fg%2F11pwlwt2x8?hl=pt-BR&entry=ttu&g_ep=EgoyMDI1MDUyMS4wIKXMDSoASAFQAw%3D%3D" },
   { name: "Carmópolis de Minas - MG", keys: carmopolis, link: "https://www.google.com.br/maps/place/INCHARGE+Esta%C3%A7%C3%A3o+de+Carregamento/@-20.5065926,-44.6093689,100m/data=!3m1!1e3!4m14!1m7!3m6!1s0xa0ee14fb1fc1cf:0x329f52ea2b3e2d74!2sEletroposto+Venda+do+Chico+Carm%C3%B3polis!8m2!3d-20.506685!4d-44.609446!16s%2Fg%2F11pwlxv6ds!3m5!1s0xa0ef6b6e931af5:0x801df348edc67533!8m2!3d-20.5064554!4d-44.6091687!16s%2Fg%2F11l139q7l_?hl=pt-BR&entry=ttu&g_ep=EgoyMDI1MDUyMS4wIKXMDSoASAFQAw%3D%3D" },
-  { name: "Aparecida do Norte - SP", keys: aparecida, link: "https://www.google.com.br/maps/place/Eletroposto+Posto+Arco+Iris+Aparecida/@-22.8743063,-45.2656434,60m/data=!3m1!1e3!4m14!1m7!3m6!1s0x94ccc484cea353c3:0xbc3688a171bea567!2sPosto+Arco+%C3%8Dris+de+Aparecida+Ltda.!8m2!3d-22.8741826!4d-45.2654856!16s%2Fg%2F1tdmr4xs!3m5!1s0x94ccc2d6a3b5ac5b:0x8a6f83ca40deb827!8m2!3d-22.874282!4d-45.2655312!16s%2Fg%2F11sk9kfjmk?hl=pt-BR&entry=ttu&g_ep=EgoyMDI1MDUyMS4wIKXMDSoASAFQAw%3D%3D" },
+  { name: "Aparecida - SP", keys: aparecida, link: "https://www.google.com.br/maps/place/Eletroposto+Posto+Arco+Iris+Aparecida/@-22.8743063,-45.2656434,60m/data=!3m1!1e3!4m14!1m7!3m6!1s0x94ccc484cea353c3:0xbc3688a171bea567!2sPosto+Arco+%C3%8Dris+de+Aparecida+Ltda.!8m2!3d-22.8741826!4d-45.2654856!16s%2Fg%2F1tdmr4xs!3m5!1s0x94ccc2d6a3b5ac5b:0x8a6f83ca40deb827!8m2!3d-22.874282!4d-45.2655312!16s%2Fg%2F11sk9kfjmk?hl=pt-BR&entry=ttu&g_ep=EgoyMDI1MDUyMS4wIKXMDSoASAFQAw%3D%3D" },
   { name: "Santa Rita do Sapucaí - MG", keys: inCharge, link: "https://www.google.com.br/maps/place/INCHARGE/@-22.25777,-45.6949433,174m/data=!3m1!1e3!4m14!1m7!3m6!1s0x94cba3c1a90745e5:0xe470d0de88b6e47f!2sEletroposto+INCHARGE!8m2!3d-22.2576194!4d-45.6938457!16s%2Fg%2F11gpfbxr3y!3m5!1s0x94cba23fd863a645:0x48183e0a07f21d84!8m2!3d-22.2575149!4d-45.6937626!16s%2Fg%2F11b6mnxjqr?hl=pt-BR&entry=ttu&g_ep=EgoyMDI1MDUyMS4wIKXMDSoASAFQAw%3D%3D" },
 ];
 
