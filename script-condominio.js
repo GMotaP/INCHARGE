@@ -1,29 +1,47 @@
 const locationsContainer = document.getElementById("locations");
 const updateTimeElement = document.getElementById("last-update");
 
-// Dados dos condomínios
-const condominios = [
-  { nome: "Edifício Bios Santana", incs: ["INC008"] },
-  { nome: "Conjunto Comercial Casablanca", incs: ["INC005", "INC006"] },
-  { nome: "Edifício Oiapoque", incs: ["INC015", "INC016", "INC110"] },
-  { nome: "Condomínio Palomar", incs: ["INC263"] },
-  { nome: "Sky Galleria", incs: ["INC037", "INC038", "INC039"] },
-  // Adicione mais conforme desejar
+const condominiosIndividuais = [
+  { nome: "Cond Iman Vila Mariana", incs: ["INC101", "INC258", "INC243", "INC102"] },
+  { nome: "CONDOMINIO EDIFICIO BELLE VILLE", incs: ["INC130", "INC131", "INC170", "INC257"] },
+  { nome: "CONDOMINIO EDIFICIO GRAND PRIVILEGE", incs: ["INC181", "INC286", "INC180", "INC179", "INC185", "INC182", "INC183", "INC184", "INC297", "INC262"] },
+  { nome: "CONDOMINIO EDIFICIO GRAND STATION", incs: ["INC135", "INC136", "INC265", "INC266"] },
+  { nome: "Condomínio Itanhangá Hills", incs: ["INC195", "INC197", "INC294", "INC196", "INC261"] },
+  { nome: "CONDOMINIO LAKE - PARQUE IBIRAPUERA", incs: ["INC092", "INC093", "INC094", "INC099"] },
+  { nome: "CONDOMINIO RESIDENCIAL AMAVEL", incs: ["INC203", "INC204", "INC302", "INC205", "INC206", "INC253", "INC208", "INC210", "INC219", "INC267", "INC207", "INC209", "INC213", "INC292", "INC211", "INC212", "INC217", "INC216", "INC218", "INC293", "INC214", "INC215"] },
+  { nome: "EDIFICIO BRASILIA CELEBRATION", incs: ["INC103", "INC201"] },
+  { nome: "EDIFICIO LE PARC ITAIM", incs: ["INC061", "INC062", "INC063", "INC064", "INC065", "INC066", "INC067", "INC068", "INC069", "INC070", "INC071", "INC072", "INC073", "INC074", "INC075", "INC076", "INC077", "INC079", "INC080", "INC081", "INC082", "INC083", "INC084", "INC085", "INC086", "INC087", "INC088", "INC089"] },
+  { nome: "EDIFICIO OIAPOQUE", incs: ["INC015", "INC149", "INC159", "INC161", "INC167", "INC175", "INC242", "INC016", "INC110", "INC150", "INC160", "iNC194", "INC246", "INC111", "INC112", "INC113", "INC114", "INC116", "INC115", "INC172", "INC174", "INC169"] },
+  { nome: "Edificio Parc Devant", incs: ["INC177", "INC188", "INC199", "INC200", "INC256", "INC176", "INC193", "INC260", "INC259", "INC178", "INC186", "INC187", "INC189", "INC190", "INC191", "INC192", "INC300"] },
+  { nome: "ETERN", incs: ["INC221", "INC220", "INC295", "INC284"] },
+  { nome: "VILA NOVA RESERVED", incs: ["INC272", "INC271", "INC273", "INC275", "INC276", "INC301", "INC274", "INC277", "INC279", "INC281", "INC278", "IN280"] }
+];
+
+const condominiosAgrupados = [
+  { nome: "CONDOMINIO DO EDIFICIO BEVERLY HILLS", incs: ["INC019"] },
+  { nome: "CONDOMINIO EDIFICIO RESIDENCIAL CEDRO", incs: ["INC156"] },
+  { nome: "CONDOMÍNIO EDIFÍCIO VERTIGO", incs: ["INC155"] },
+  { nome: "Condomínio Essência da Vila", incs: ["INC224", "INC225", "INC226"] },
+  { nome: "Condomínio Meridian Residence", incs: ["INC152"] },
+  { nome: "CONDOMÍNIO MIRANTE CLUB STRATÉGIA", incs: ["INC233"] },
+  { nome: "CONDOMINIO PALOMAR", incs: ["INC263"] },
+  { nome: "CONDOMINIO SINTONIA IBIRAPUERA", incs: ["INC166"] },
+  { nome: "CONDOMINIO WOK RESIDENCE", incs: ["INC123", "INC270"] },
+  { nome: "EDIFICIO BIOS SANTANA", incs: ["INC008"] },
+  { nome: "Edifício Le Rêve Exto", incs: ["INC222", "INC223"] },
+  { nome: "INSPIRE IBIRAPUERA", incs: ["INC254", "INC255"] },
+  { nome: "INSIGHT VILA LEOPOLDINA", incs: ["INC026", "INC020"] },
+  { nome: "Plaza de España", incs: ["INC229", "INC230"] }
 ];
 
 function getStatusColor(status, online) {
   if (online === 0) return "black";
   switch (status) {
-    case "Available":
-      return "#4caf50";
-    case "Preparing":
-      return "#006400";
-    case "Finishing":
-      return "#FFFF00";
-    case "Charging":
-      return "#FF585B";
-    default:
-      return "#808080";
+    case "Available": return "#4caf50";
+    case "Preparing": return "#006400";
+    case "Finishing": return "#FFFF00";
+    case "Charging": return "#FF585B";
+    default: return "#808080";
   }
 }
 
@@ -36,34 +54,35 @@ function createLocationColumn(nome, incs, data) {
   div.appendChild(title);
 
   incs.forEach((inc) => {
-    const subTitle = document.createElement("h3");
-    subTitle.className = "titleCidade";
-    subTitle.textContent = inc;
-    div.appendChild(subTitle);
+    const chargerTitle = document.createElement("h3");
+    chargerTitle.className = "titleCidade";
+    chargerTitle.textContent = inc.toUpperCase();
+    div.appendChild(chargerTitle);
 
-    if (!data[inc] || data[inc].length === 0) {
+    const chargers = data[inc] || [];
+    const containerInfo = document.createElement("div");
+    containerInfo.className = "containerInfo";
+
+    if (chargers.length === 0) {
       const p = document.createElement("p");
       p.textContent = "Carregando dados...";
       div.appendChild(p);
     } else {
-      const containerInfo = document.createElement("div");
-      containerInfo.className = "containerInfo";
-
-      data[inc].forEach((plugInfo) => {
+      chargers.forEach((plugInfo) => {
         const link = document.createElement("a");
         link.href = `https://incharge.app/now/${inc}/${plugInfo.plug}`;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
 
-        const box = document.createElement("div");
-        box.className = "chargerInfo";
-        box.textContent = `Plug ${plugInfo.plug}`;
-        box.style.backgroundColor = getStatusColor(plugInfo.status, plugInfo.online);
+        const chargerDiv = document.createElement("div");
+        chargerDiv.className = "chargerInfo";
+        chargerDiv.textContent = `Plug ${plugInfo.plug}`;
+        chargerDiv.style.backgroundColor = getStatusColor(plugInfo.status, plugInfo.online);
         if (plugInfo.online === 0) {
-          box.style.opacity = "0.5";
+          chargerDiv.style.opacity = "0.5";
         }
 
-        link.appendChild(box);
+        link.appendChild(chargerDiv);
         containerInfo.appendChild(link);
       });
 
@@ -72,6 +91,56 @@ function createLocationColumn(nome, incs, data) {
   });
 
   locationsContainer.appendChild(div);
+}
+
+function createGroupedColumn(grupo, data) {
+  const wrapper = document.createElement("div");
+  wrapper.className = "city-column";
+
+  grupo.forEach((cond) => {
+    const title = document.createElement("h2");
+    title.textContent = cond.nome;
+    wrapper.appendChild(title);
+
+    cond.incs.forEach((inc) => {
+      const chargerTitle = document.createElement("h3");
+      chargerTitle.className = "titleCidade";
+      chargerTitle.textContent = inc.toUpperCase();
+      wrapper.appendChild(chargerTitle);
+
+      const chargers = data[inc] || [];
+      const containerInfo = document.createElement("div");
+      containerInfo.className = "containerInfo";
+
+      if (chargers.length === 0) {
+        const p = document.createElement("p");
+        p.textContent = "Carregando dados...";
+        wrapper.appendChild(p);
+      } else {
+        chargers.forEach((plugInfo) => {
+          const link = document.createElement("a");
+          link.href = `https://incharge.app/now/${inc}/${plugInfo.plug}`;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+
+          const chargerDiv = document.createElement("div");
+          chargerDiv.className = "chargerInfo";
+          chargerDiv.textContent = `Plug ${plugInfo.plug}`;
+          chargerDiv.style.backgroundColor = getStatusColor(plugInfo.status, plugInfo.online);
+          if (plugInfo.online === 0) {
+            chargerDiv.style.opacity = "0.5";
+          }
+
+          link.appendChild(chargerDiv);
+          containerInfo.appendChild(link);
+        });
+
+        wrapper.appendChild(containerInfo);
+      }
+    });
+  });
+
+  locationsContainer.appendChild(wrapper);
 }
 
 function atualizarHorario() {
@@ -86,9 +155,11 @@ function atualizarHorario() {
 async function getAllData() {
   locationsContainer.innerHTML = "";
 
-  const urls = condominios.flatMap((c) =>
-    c.incs.map((key) => ({ key, url: `https://api.incharge.app/api/v2/now/${key}` }))
-  );
+  const allIncs = [...condominiosIndividuais, ...condominiosAgrupados].flatMap(c => c.incs);
+  const urls = allIncs.map((key) => ({
+    key,
+    url: `https://api.incharge.app/api/v2/now/${key}`
+  }));
 
   const responses = await Promise.all(
     urls.map((item) =>
@@ -104,12 +175,13 @@ async function getAllData() {
     data[r.key] = r.data;
   });
 
-  condominios.forEach((c) => {
+  condominiosIndividuais.forEach((c) => {
     createLocationColumn(c.nome, c.incs, data);
   });
 
+  createGroupedColumn(condominiosAgrupados, data);
   atualizarHorario();
 }
 
 getAllData();
-setInterval(getAllData, 30000);
+setInterval(getAllData, 60000);
