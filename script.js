@@ -1,6 +1,7 @@
 const locationsContainer = document.getElementById("locations");
 const updateTimeElement = document.getElementById("last-update");
 
+// Definição dos carregadores por localidade
 const saoJose = ["inc250", "inc251", "inc252"];
 const tresCoracoes = ["inc234", "inc235", "inc236"];
 const carmopolis = ["inc237", "inc238", "inc239"];
@@ -9,6 +10,7 @@ const santaRita = ["inc241"];
 const itajuba = ["pc011"];
 const divinopolis = ["p4c006"];
 
+// Estrutura com nomes e links de cada local
 const locations = [
   { name: "São José dos Campos - SP", keys: saoJose, link: "https://www.google.com.br/maps/place/PIT+-+Parque+de+Inovação+Tecnológica+São+José+dos+Campos" },
   { name: "Três Corações - MG", keys: tresCoracoes, link: "https://www.google.com.br/maps/place/Venda+do+Chico+-+Três+Corações" },
@@ -25,6 +27,7 @@ const locations = [
   }
 ];
 
+// Define a cor de fundo conforme o status do carregador
 function getStatusColor(status, online) {
   if (online === 0) return "black";
   switch (status) {
@@ -36,6 +39,7 @@ function getStatusColor(status, online) {
   }
 }
 
+// Cria coluna de carregadores para cidades comuns (não agrupadas)
 function createLocationColumn(cityName, keys, data, link) {
   const cityDiv = document.createElement("div");
   cityDiv.className = "city-column";
@@ -68,7 +72,9 @@ function createLocationColumn(cityName, keys, data, link) {
     } else {
       chargers.forEach((charger) => {
         const link = document.createElement("a");
-        link.href = `https://incharge.app/now/${key}/${charger.plug}`;
+
+        // 🔄 NOVO LINK com formato https://pay.incharge.app/now/INCXXX/X
+        link.href = `https://pay.incharge.app/now/${key.toUpperCase()}/${charger.plug}`;
         link.target = "_blank";
         link.rel = "noopener noreferrer";
 
@@ -91,6 +97,7 @@ function createLocationColumn(cityName, keys, data, link) {
   locationsContainer.appendChild(cityDiv);
 }
 
+// Cria colunas agrupadas (ex: Unidades Individuais)
 function createGroupedColumn(group) {
   const wrapper = document.createElement("div");
   wrapper.className = "city-column";
@@ -124,7 +131,9 @@ function createGroupedColumn(group) {
       } else {
         chargers.forEach((charger) => {
           const link = document.createElement("a");
-          link.href = `https://incharge.app/now/${key}/${charger.plug}`;
+
+          // 🔄 NOVO LINK com formato https://pay.incharge.app/now/INCXXX/X
+          link.href = `https://pay.incharge.app/now/${key.toUpperCase()}/${charger.plug}`;
           link.target = "_blank";
           link.rel = "noopener noreferrer";
 
@@ -150,6 +159,7 @@ function createGroupedColumn(group) {
 
 let globalData = {};
 
+// Atualiza o horário de última atualização
 function atualizarHorario() {
   const agora = new Date();
   const hora = agora.toLocaleTimeString("pt-BR", { hour: '2-digit', minute: '2-digit', second: '2-digit' });
@@ -159,6 +169,7 @@ function atualizarHorario() {
   }
 }
 
+// Busca dados de todos os carregadores
 async function getAllData() {
   locationsContainer.innerHTML = "";
 
@@ -197,5 +208,6 @@ async function getAllData() {
   atualizarHorario();
 }
 
+// Inicia o carregamento e atualiza a cada 30 segundos
 getAllData();
 setInterval(getAllData, 30000);
