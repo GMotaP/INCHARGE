@@ -7,7 +7,7 @@ const tresCoracoes = ["inc234", "inc235", "inc236"];
 const carmopolis = ["inc237", "inc238", "inc239"];
 const aparecida = ["inc247", "inc248", "inc249"];
 const santaRita = ["inc241"];
-const itajuba = ["pc011"];
+const itajuba = ["pc106"];
 const divinopolis = ["p4c006"];
 
 // Estrutura com nomes e links de cada local
