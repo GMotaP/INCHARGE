@@ -39,6 +39,21 @@ function getStatusColor(status, online) {
   }
 }
 
+// Gera o link de pagamento conforme a localidade (exceções Itajubá e Divinópolis)
+function getPaymentLink(key, plug) {
+  const upperKey = key.toUpperCase();
+  if (upperKey === "PC106") {
+    // Itajubá (ITACAR)
+    return `https://pay4charge.com/now/PC106/${plug}`;
+  }
+  if (upperKey === "P4C006") {
+    // Divinópolis (AGL) → ID padronizado no pay4charge é PC006
+    return `https://pay4charge.com/now/PC006/${plug}`;
+  }
+  // Demais continuam no Pay Incharge
+  return `https://pay.incharge.app/now/${upperKey}/${plug}`;
+}
+
 // Cria coluna de carregadores para cidades comuns (não agrupadas)
 function createLocationColumn(cityName, keys, data, link) {
   const cityDiv = document.createElement("div");
@@ -71,12 +86,10 @@ function createLocationColumn(cityName, keys, data, link) {
       cityDiv.appendChild(p);
     } else {
       chargers.forEach((charger) => {
-        const link = document.createElement("a");
-
-        // 🔄 NOVO LINK com formato https://pay.incharge.app/now/INCXXX/X
-        link.href = `https://pay.incharge.app/now/${key.toUpperCase()}/${charger.plug}`;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
+        const linkA = document.createElement("a");
+        linkA.href = getPaymentLink(key, charger.plug);
+        linkA.target = "_blank";
+        linkA.rel = "noopener noreferrer";
 
         const chargerDiv = document.createElement("div");
         chargerDiv.className = "chargerInfo";
@@ -86,8 +99,8 @@ function createLocationColumn(cityName, keys, data, link) {
           chargerDiv.style.opacity = "0.5";
         }
 
-        link.appendChild(chargerDiv);
-        containerInfo.appendChild(link);
+        linkA.appendChild(chargerDiv);
+        containerInfo.appendChild(linkA);
       });
 
       cityDiv.appendChild(containerInfo);
@@ -130,12 +143,10 @@ function createGroupedColumn(group) {
         wrapper.appendChild(p);
       } else {
         chargers.forEach((charger) => {
-          const link = document.createElement("a");
-
-          // 🔄 NOVO LINK com formato https://pay.incharge.app/now/INCXXX/X
-          link.href = `https://pay.incharge.app/now/${key.toUpperCase()}/${charger.plug}`;
-          link.target = "_blank";
-          link.rel = "noopener noreferrer";
+          const linkA = document.createElement("a");
+          linkA.href = getPaymentLink(key, charger.plug);
+          linkA.target = "_blank";
+          linkA.rel = "noopener noreferrer";
 
           const chargerDiv = document.createElement("div");
           chargerDiv.className = "chargerInfo";
@@ -145,8 +156,8 @@ function createGroupedColumn(group) {
             chargerDiv.style.opacity = "0.5";
           }
 
-          link.appendChild(chargerDiv);
-          containerInfo.appendChild(link);
+          linkA.appendChild(chargerDiv);
+          containerInfo.appendChild(linkA);
         });
 
         wrapper.appendChild(containerInfo);
@@ -162,7 +173,7 @@ let globalData = {};
 // Atualiza o horário de última atualização
 function atualizarHorario() {
   const agora = new Date();
-  const hora = agora.toLocaleTimeString("pt-BR", { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  const hora = agora.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
   const data = agora.toLocaleDateString("pt-BR");
   if (updateTimeElement) {
     updateTimeElement.textContent = `Última atualização: ${data} às ${hora}`;
