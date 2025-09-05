@@ -48,7 +48,7 @@ function getPaymentLink(key, plug) {
   }
   if (upperKey === "P4C006") {
     // Divinópolis (AGL) → ID padronizado no pay4charge é PC006
-    return `https://pay4charge.com/now/PC006/${plug}`;
+    return `https://pay4charge.com/now/P4C006/${plug}`;
   }
   // Demais continuam no Pay Incharge
   return `https://pay.incharge.app/now/${upperKey}/${plug}`;
