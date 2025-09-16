@@ -1,9 +1,4 @@
-diff --git a/style.css b/style.css
-index 63e8d28d86db1920ca72561dfeb936963db53985..841ed6f0195739d9c04f2a69d6a19a9896348a21 100644
---- a/style.css
-+++ b/style.css
-@@ -1,198 +1,365 @@
--/* Reset e base */
+
 -* {
 +:root {
 +  --bg-01: #020617;
