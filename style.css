@@ -1,498 +1,198 @@
+/* Reset e base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
 
--* {
-+:root {
-+  --bg-01: #020617;
-+  --bg-02: #071024;
-+  --bg-03: #0f172a;
-+  --surface-strong: rgba(11, 20, 38, 0.88);
-+  --surface-soft: rgba(15, 23, 42, 0.65);
-+  --border-soft: rgba(148, 163, 184, 0.2);
-+  --text-primary: #f8fafc;
-+  --text-secondary: #94a3b8;
-+  --text-muted: #64748b;
-+  --accent-sp: #38bdf8;
-+  --accent-mg: #34d399;
-+  --accent-mg-vertentes: #fbbf24;
-+  --accent-hub: #c084fc;
-+  --shadow-lg: 0 24px 48px rgba(2, 6, 23, 0.48);
-+  --font-main: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-+}
-+
-+*,
-+*::before,
-+*::after {
-   box-sizing: border-box;
-   margin: 0;
-   padding: 0;
- }
-+
- body {
--  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
--  background-color: #f5f5f5;
--  color: #333;
-+  margin: 0;
-+  min-height: 100vh;
-+  font-family: var(--font-main);
-+  background:
-+    radial-gradient(circle at 18% 20%, rgba(56, 189, 248, 0.25), transparent 55%),
-+    radial-gradient(circle at 82% 18%, rgba(192, 132, 252, 0.22), transparent 60%),
-+    linear-gradient(160deg, var(--bg-01) 0%, var(--bg-02) 45%, var(--bg-03) 100%);
-+  color: var(--text-primary);
-+  line-height: 1.6;
-+  padding-bottom: 48px;
- }
- 
--/* Cabeçalho */
- h1 {
-+  width: min(1200px, 100% - 32px);
-+  margin: 32px auto 0;
-+  padding: clamp(18px, 4vw, 28px);
-+  text-align: center;
-+  text-transform: uppercase;
-+  letter-spacing: 0.08em;
-+  font-size: clamp(1.6rem, 4vw, 2.2rem);
-+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.9), rgba(16, 185, 129, 0.9));
-+  border-radius: 24px;
-+  box-shadow: 0 24px 48px rgba(13, 148, 136, 0.35);
-+}
-+
-+#last-update {
-+  width: min(1200px, 100% - 32px);
-+  margin: 12px auto 0;
-   text-align: center;
--  background-color: #ff585b;
--  color: white;
--  padding: 20px;
--  font-size: 24px;
-+  color: var(--text-secondary);
-+  font-size: 0.95rem;
- }
- 
--/* Layout */
- .main-container {
--  display: flex;
--  flex-wrap: wrap;
--  justify-content: center;
--  padding: 20px;
--  gap: 20px;
-+  width: min(1200px, 100% - 32px);
-+  margin: 32px auto 0;
-+  display: grid;
-+  grid-template-columns: minmax(220px, 260px) 1fr;
-+  gap: 24px;
-+  align-items: start;
- }
- 
--/* Legenda */
- .legend {
--  min-width: 160px;
--  background: #fff;
--  border: 1px solid #ddd;
--  border-radius: 8px;
--  padding: 10px;
--  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-+  position: sticky;
-+  top: 32px;
-+  align-self: start;
-+  display: flex;
-+  flex-direction: column;
-+  gap: 16px;
-+  padding: 24px;
-+  border-radius: 24px;
-+  border: 1px solid var(--border-soft);
-+  background: var(--surface-strong);
-+  box-shadow: var(--shadow-lg);
-+  backdrop-filter: blur(14px);
- }
-+
- .legend h2 {
--  font-size: 16px;
-+  margin: 0;
-+  text-transform: uppercase;
-+  letter-spacing: 0.16em;
-+  font-size: 0.9rem;
-   text-align: center;
--  margin-bottom: 10px;
--  color: #ff585b;
-+  color: var(--text-primary);
- }
-+
- .legend-item {
-   display: flex;
-   align-items: center;
--  margin-bottom: 10px;
--  font-size: 12px;
-+  gap: 12px;
-+  font-size: 0.95rem;
-+  color: var(--text-secondary);
- }
-+
- .legend-color {
--  width: 14px;
--  height: 14px;
--  border-radius: 4px;
--  margin-right: 8px;
-+  width: 18px;
-+  height: 18px;
-+  border-radius: 6px;
-+  border: 1px solid rgba(255, 255, 255, 0.22);
-+  box-shadow: 0 0 0 3px rgba(148, 163, 184, 0.18);
- }
- 
--/* Locais */
- .locations-container {
--  display: flex;
--  flex-wrap: wrap;
--  gap: 15px;
--  justify-content: center;
--  flex: 1;
-+  display: grid;
-+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-+  gap: 24px;
- }
- 
- .city-column {
--  border: 1px solid red;
--  box-shadow: 1px 1px 8px gray;
--  padding: 10px;
--  width: 220px;
-+  position: relative;
-+  padding: 48px 24px 24px;
-+  border-radius: 24px;
-+  background: var(--surface-soft);
-+  border: 1px solid var(--border-soft);
-+  box-shadow: var(--shadow-lg);
-+  backdrop-filter: blur(12px);
-+  overflow: hidden;
-+  isolation: isolate;
-+  --accent-color: var(--accent-mg);
-+  --region-label: "";
-+  --region-label-display: none;
-+}
-+
-+.city-column::after {
-+  content: "";
-+  position: absolute;
-+  inset: 0;
-+  background: radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.18), transparent 60%);
-+  opacity: 0.35;
-+  pointer-events: none;
-+}
-+
-+.city-column::before {
-+  content: var(--region-label);
-+  position: absolute;
-+  top: 18px;
-+  left: 24px;
-+  display: var(--region-label-display, none);
-+  align-items: center;
-+  justify-content: center;
-+  padding: 4px 14px;
-+  border-radius: 999px;
-+  background: var(--accent-color);
-+  color: #020617;
-+  font-size: 0.68rem;
-+  font-weight: 700;
-+  letter-spacing: 0.12em;
-+  text-transform: uppercase;
-+  box-shadow: 0 12px 25px rgba(15, 23, 42, 0.35);
-+  z-index: 1;
-+}
-+
-+.city-column h2 {
-   display: flex;
-   justify-content: center;
--  align-items: center;
--  flex-direction: column;
-+  margin: 36px 0 16px;
- }
-+
-+.city-column h2:first-of-type {
-+  margin-top: 48px;
-+}
-+
-+.city-column h2 a,
- .city-column h2 {
--  margin-bottom: 10px;
--  color: red;
--  font-size: 16px;
-+  font-size: 0.95rem;
-+  font-weight: 600;
-+  letter-spacing: 0.08em;
-+  text-transform: uppercase;
-   text-align: center;
- }
-+
-+.city-column h2 a {
-+  display: inline-flex;
-+  align-items: center;
-+  justify-content: center;
-+  padding: 6px 18px;
-+  border-radius: 999px;
-+  border: 1px solid rgba(148, 163, 184, 0.35);
-+  background: rgba(15, 23, 42, 0.72);
-+  color: var(--text-primary) !important;
-+  text-decoration: none;
-+  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-+}
-+
-+.city-column h2 a:hover,
-+.city-column h2 a:focus-visible {
-+  border-color: var(--accent-color);
-+  color: var(--accent-color) !important;
-+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
-+  outline: none;
-+}
-+
- .titleCidade {
-+  margin: 18px 0 8px;
-+  font-size: 0.78rem;
-   text-transform: uppercase;
--  margin: 6px 0;
--  font-size: 12px;
-+  letter-spacing: 0.18em;
-   text-align: center;
-+  color: var(--text-secondary);
- }
-+
-+.titleCidade::before {
-+  content: "";
-+  display: block;
-+  width: 56px;
-+  height: 2px;
-+  margin: 0 auto 10px;
-+  border-radius: 999px;
-+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-+  opacity: 0.65;
-+}
-+
- .containerInfo {
--  display: flex;
--  gap: 10px;
--  margin-bottom: 10px;
--  flex-wrap: wrap;
--  justify-content: center;
-+  display: grid;
-+  grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
-+  gap: 12px;
-+  margin-bottom: 12px;
-+}
-+
-+.containerInfo a {
-+  text-decoration: none;
- }
-+
- .chargerInfo {
--  padding: 10px;
--  background-color: green;
--  border-radius: 8px;
--  color: white;
--  font-weight: bold;
-+  display: grid;
-+  place-items: center;
-+  height: 68px;
-+  border-radius: 18px;
-+  font-weight: 700;
-+  font-size: 0.9rem;
-+  color: #fff;
-+  text-transform: uppercase;
-+  letter-spacing: 0.08em;
-+  border: 1px solid rgba(255, 255, 255, 0.18);
-+  box-shadow: 0 18px 30px rgba(2, 6, 23, 0.45);
-+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-+}
-+
-+.chargerInfo:hover,
-+.chargerInfo:focus-visible {
-+  transform: translateY(-2px) scale(1.03);
-+  box-shadow: 0 25px 35px rgba(2, 6, 23, 0.6);
-+  filter: brightness(1.08);
-+  outline: none;
-+}
-+
-+.city-column p {
-+  margin: 12px 0;
-   text-align: center;
--  width: 60px;
--  height: 60px;
--  font-size: 11px;
--  display: flex;
--  align-items: center;
--  justify-content: center;
--  transition: transform 0.2s ease, box-shadow 0.2s ease;
-+  color: var(--text-muted);
-+  font-size: 0.85rem;
- }
- 
--.chargerInfo:hover {
--  transform: scale(1.05);
--  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-+/* Região e destaque dos hubs na página de status */
-+body:not(.pagina-condominios) .locations-container .city-column:nth-of-type(1) {
-+  --accent-color: var(--accent-sp);
-+  --region-label: "Vale do Paraíba · SP";
-+  --region-label-display: inline-flex;
-+  border-top: 3px solid var(--accent-color);
- }
- 
--/* Links dos plugs */
--.containerInfo a {
--  text-decoration: none;
-+body:not(.pagina-condominios) .locations-container .city-column:nth-of-type(2) {
-+  --accent-color: var(--accent-mg);
-+  --region-label: "Sul de Minas · MG";
-+  --region-label-display: inline-flex;
-+  border-top: 3px solid var(--accent-color);
- }
- 
--.containerInfo a .chargerInfo {
--  color: white;
--  display: block;
-+body:not(.pagina-condominios) .locations-container .city-column:nth-of-type(3) {
-+  --accent-color: var(--accent-mg-vertentes);
-+  --region-label: "Campo das Vertentes · MG";
-+  --region-label-display: inline-flex;
-+  border-top: 3px solid var(--accent-color);
- }
--.pagina-condominios .locations-container {
--  display: flex;
--  flex-wrap: wrap;
--  gap: 20px;
--  justify-content: center;
--  align-items: flex-start;
--  padding: 20px;
-+
-+body:not(.pagina-condominios) .locations-container .city-column:nth-of-type(4) {
-+  --accent-color: var(--accent-sp);
-+  --region-label: "Vale do Paraíba · SP";
-+  --region-label-display: inline-flex;
-+  border-top: 3px solid var(--accent-color);
- }
- 
--.pagina-condominios .city-column {
--  border: 1px solid red;
--  box-shadow: 1px 1px 8px gray;
--  padding: 10px;
--  display: flex;
--  flex-direction: column;
--  justify-content: flex-start;
--  align-items: stretch;
--  flex: 1 1 300px;
--  max-width: 400px;
--  min-width: 260px;
-+body:not(.pagina-condominios) .locations-container .city-column:nth-of-type(5) {
-+  --accent-color: var(--accent-hub);
-+  --region-label: "Hubs Individuais · MG";
-+  --region-label-display: inline-flex;
-+  border-top: 3px solid var(--accent-color);
- }
- 
--.pagina-condominios .city-column h2 {
--  margin-bottom: 10px;
--  color: red;
--  font-size: 16px;
--  text-align: center;
-+body:not(.pagina-condominios) .locations-container .city-column:nth-of-type(5) h2:nth-of-type(1) a,
-+body:not(.pagina-condominios) .locations-container .city-column:nth-of-type(5) h2:nth-of-type(2) a {
-+  border-color: rgba(52, 211, 153, 0.35);
- }
- 
--.pagina-condominios .titleCidade {
--  text-transform: uppercase;
--  margin: 6px 0;
--  font-size: 12px;
--  text-align: center;
-+body:not(.pagina-condominios) .locations-container .city-column:nth-of-type(5) h2:nth-of-type(3) a {
-+  border-color: rgba(249, 191, 36, 0.35);
- }
- 
--.pagina-condominios .containerInfo {
--  display: flex;
--  flex-wrap: wrap;
--  gap: 10px;
--  margin-bottom: 10px;
--  justify-content: flex-start;
--}
--
--.pagina-condominios .chargerInfo {
--  width: calc(33.33% - 10px); /* 3 por linha com gap */
--  height: 50px;
--  font-size: 11px;
--  padding: 8px;
--  background-color: green;
--  border-radius: 6px;
--  color: white;
--  font-weight: bold;
--  text-align: center;
--  display: flex;
--  align-items: center;
--  justify-content: center;
--  transition: transform 0.2s ease, box-shadow 0.2s ease;
--  box-sizing: border-box;
--  min-width: 70px;
-+/* Ajustes para a página de condomínios reaproveitarem o layout */
-+body.pagina-condominios h1 {
-+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(244, 114, 182, 0.9));
-+  box-shadow: 0 24px 48px rgba(59, 130, 246, 0.3);
-+}
-+
-+body.pagina-condominios .legend {
-+  position: static;
- }
- 
--.pagina-condominios .chargerInfo:hover {
--  transform: scale(1.05);
--  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-+body.pagina-condominios .city-column {
-+  --accent-color: #60a5fa;
-+  border-top: 3px solid transparent;
- }
- 
-+@media (max-width: 960px) {
-+  .main-container {
-+    grid-template-columns: 1fr;
-+  }
-+
-+  .legend {
-+    position: static;
-+    order: -1;
-+  }
-+
-+  .locations-container {
-+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-+  }
-+}
-+
-+@media (max-width: 640px) {
-+  h1 {
-+    width: min(100%, 100% - 24px);
-+    margin-top: 24px;
-+  }
-+
-+  #last-update,
-+  .main-container {
-+    width: min(100%, 100% - 24px);
-+  }
-+
-+  .city-column {
-+    padding: 42px 18px 20px;
-+  }
-+
-+  .city-column h2:first-of-type {
-+    margin-top: 40px;
-+  }
-+}
- 
--/* Ajustar layout para permitir 5 colunas lado a lado */
--.city-column:nth-child(5) {
--  flex-basis: auto;
-+@media (prefers-reduced-motion: reduce) {
-+  *,
-+  *::before,
-+  *::after {
-+    animation-duration: 0.01ms !important;
-+    animation-iteration-count: 1 !important;
-+    transition-duration: 0.01ms !important;
-+    scroll-behavior: auto !important;
-+  }
- }
+/* Cabeçalho */
+h1 {
+  text-align: center;
+  background-color: #ff585b;
+  color: white;
+  padding: 20px;
+  font-size: 24px;
+}
+
+/* Layout */
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* Legenda */
+.legend {
+  min-width: 160px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+.legend h2 {
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #ff585b;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+.legend-color {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+/* Locais */
+.locations-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  flex: 1;
+}
+
+.city-column {
+  border: 1px solid red;
+  box-shadow: 1px 1px 8px gray;
+  padding: 10px;
+  width: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.city-column h2 {
+  margin-bottom: 10px;
+  color: red;
+  font-size: 16px;
+  text-align: center;
+}
+.titleCidade {
+  text-transform: uppercase;
+  margin: 6px 0;
+  font-size: 12px;
+  text-align: center;
+}
+.containerInfo {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.chargerInfo {
+  padding: 10px;
+  background-color: green;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  width: 60px;
+  height: 60px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chargerInfo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Links dos plugs */
+.containerInfo a {
+  text-decoration: none;
+}
+
+.containerInfo a .chargerInfo {
+  color: white;
+  display: block;
+}
+.pagina-condominios .locations-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.pagina-condominios .city-column {
+  border: 1px solid red;
+  box-shadow: 1px 1px 8px gray;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex: 1 1 300px;
+  max-width: 400px;
+  min-width: 260px;
+}
+
+.pagina-condominios .city-column h2 {
+  margin-bottom: 10px;
+  color: red;
+  font-size: 16px;
+  text-align: center;
+}
+
+.pagina-condominios .titleCidade {
+  text-transform: uppercase;
+  margin: 6px 0;
+  font-size: 12px;
+  text-align: center;
+}
+
+.pagina-condominios .containerInfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+  justify-content: flex-start;
+}
+
+.pagina-condominios .chargerInfo {
+  width: calc(33.33% - 10px); /* 3 por linha com gap */
+  height: 50px;
+  font-size: 11px;
+  padding: 8px;
+  background-color: green;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+  min-width: 70px;
+}
+
+.pagina-condominios .chargerInfo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Ajustar layout para permitir 5 colunas lado a lado */
+.city-column:nth-child(5) {
+  flex-basis: auto;
+}
