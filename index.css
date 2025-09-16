@@ -1,8 +1,4 @@
-diff --git a//dev/null b/index.css
-index 0000000000000000000000000000000000000000..daa353c644e296b1bf1f81bb11aa5871ad2bb66a 100644
---- a//dev/null
-+++ b/index.css
-@@ -0,0 +1,197 @@
+
 +:root {
 +  --primary: #ff585b;
 +  --primary-dark: #e34a4d;
