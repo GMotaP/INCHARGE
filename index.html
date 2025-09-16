@@ -1,92 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InCharge - Home</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <a class="brand" href="index.html" aria-label="InCharge">
+          <span class="brand__mark" aria-hidden="true">IC</span>
+          <span class="brand__text">InCharge</span>
+        </a>
 
- <!DOCTYPE html>
- <html lang="pt-BR">
--<head>
--  <meta charset="UTF-8" />
--  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
--  <title>INCHARGE - Home</title>
--  <link rel="stylesheet" href="style.css" />
--</head>
--<body>
--  <h1>Bem-vindo à InCharge</h1>
--  <p style="text-align:center; margin: 20px;">Escolha uma opção abaixo:</p>
-+  <head>
-+    <meta charset="UTF-8" />
-+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-+    <title>INCHARGE - Home</title>
-+    <link rel="stylesheet" href="index.css" />
-+  </head>
-+  <body>
-+    <main>
-+      <section class="hero">
-+        <h1>Bem-vindo à InCharge</h1>
-+        <p>
-+          Monitore a operação dos carregadores elétricos e acompanhe o desempenho
-+          de cada local em tempo real. Escolha um painel para começar.
-+        </p>
-+      </section>
- 
--  <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
--    <a href="status.html" style="
--      padding: 15px 30px;
--      background-color: #ff585b;
--      color: white;
--      text-decoration: none;
--      font-size: 18px;
--      border-radius: 10px;
--      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
--    ">Ver Status dos Carregadores</a>
-+      <section class="options" aria-label="Navegação principal">
-+        <a class="option-card status" href="status.html">
-+          <span class="badge">Tempo real</span>
-+          <span class="option-icon" aria-hidden="true">⚡</span>
-+          <span class="option-title">Status dos Carregadores</span>
-+          <span class="option-description">
-+            Consulte rapidamente a disponibilidade de toda a rede InCharge e
-+            acompanhe atualizações em tempo real.
-+          </span>
-+        </a>
- 
--    <a href="condominio.html" style="
--      padding: 15px 30px;
--      background-color: #006400;
--      color: white;
--      text-decoration: none;
--      font-size: 18px;
--      border-radius: 10px;
--      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
--    ">Status - Condomínios</a>
-+        <a class="option-card condominio" href="condominio.html">
-+          <span class="badge">Condomínios</span>
-+          <span class="option-icon" aria-hidden="true">🏙️</span>
-+          <span class="option-title">Painel para Condomínios</span>
-+          <span class="option-description">
-+            Visualize os carregadores instalados em condomínios parceiros e
-+            identifique rapidamente os que precisam de atenção.
-+          </span>
-+        </a>
- 
--    <a href="p4c.html" style="
--      padding: 15px 30px;
--      background-color: #007acc;
--      color: white;
--      text-decoration: none;
--      font-size: 18px;
--      border-radius: 10px;
--      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
--    ">Status - P4C</a>
--  </div>
--</body>
-+        <a class="option-card p4c" href="p4c.html">
-+          <span class="badge">P4C</span>
-+          <span class="option-icon" aria-hidden="true">🏢</span>
-+          <span class="option-title">Painel P4C</span>
-+          <span class="option-description">
-+            Acompanhe os pontos de carregamento do programa Plug for Charge com
-+            indicadores de status e funcionamento.
-+          </span>
-+        </a>
-+      </section>
-+    </main>
-+  </body>
- </html>
+        <nav class="topbar__nav" aria-label="Principais páginas">
+          <a class="topbar__link" href="status.html">Status</a>
+          <a class="topbar__link" href="condominio.html">Condomínios</a>
+          <a class="topbar__link" href="p4c.html">P4C</a>
+        </nav>
+
+        <a class="button button--ghost" href="status.html">Entrar no painel</a>
+      </header>
+
+      <main class="content">
+        <section class="hero">
+          <div class="hero__content">
+            <span class="hero__pill">Monitoramento inteligente</span>
+            <h1>Controle total da rede de carregadores InCharge</h1>
+            <p>
+              Acompanhe desempenho, disponibilidade e alertas em tempo real para
+              cada ponto de carregamento distribuído no país.
+            </p>
+
+            <div class="hero__actions">
+              <a class="button button--primary" href="status.html">
+                Ver status em tempo real
+              </a>
+              <a class="button button--outline" href="#painel">
+                Explorar soluções
+              </a>
+            </div>
+
+            <dl class="hero__metrics">
+              <div class="hero__metric">
+                <dt>Carregadores ativos</dt>
+                <dd>+120</dd>
+              </div>
+              <div class="hero__metric">
+                <dt>Cidades atendidas</dt>
+                <dd>18</dd>
+              </div>
+              <div class="hero__metric">
+                <dt>Disponibilidade média</dt>
+                <dd>97%</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="hero__preview" aria-hidden="true">
+            <article class="preview-card">
+              <header class="preview-card__header">
+                <span class="preview-card__badge">Resumo em tempo real</span>
+                <h2>Status dos Carregadores</h2>
+              </header>
+
+              <ul class="preview-card__list">
+                <li>
+                  <span class="dot dot--online"></span>
+                  <span>Disponíveis</span>
+                  <strong>82</strong>
+                </li>
+                <li>
+                  <span class="dot dot--charging"></span>
+                  <span>Em carga</span>
+                  <strong>27</strong>
+                </li>
+                <li>
+                  <span class="dot dot--attention"></span>
+                  <span>Necessitam atenção</span>
+                  <strong>5</strong>
+                </li>
+              </ul>
+
+              <footer class="preview-card__footer">
+                Atualizado há 2 minutos
+              </footer>
+            </article>
+          </div>
+        </section>
+
+        <section class="solutions" id="painel" aria-label="Painéis disponíveis">
+          <header class="solutions__header">
+            <h2>Escolha o painel ideal para o seu contexto</h2>
+            <p>
+              Acesse dashboards feitos sob medida para acompanhar indicadores de
+              operação, contratos e performance.
+            </p>
+          </header>
+
+          <div class="solutions__grid">
+            <a class="card card--status" href="status.html">
+              <div class="card__icon" aria-hidden="true">⚡</div>
+              <div class="card__body">
+                <h3>Status em tempo real</h3>
+                <p>
+                  Veja rapidamente a disponibilidade de toda a rede com
+                  indicadores de alerta inteligentes.
+                </p>
+              </div>
+              <span class="card__tag">Tempo real</span>
+            </a>
+
+            <a class="card card--condo" href="condominio.html">
+              <div class="card__icon" aria-hidden="true">🏙️</div>
+              <div class="card__body">
+                <h3>Painel para Condomínios</h3>
+                <p>
+                  Controle uso e manutenção dos carregadores instalados em
+                  condomínios parceiros.
+                </p>
+              </div>
+              <span class="card__tag">Gestão dedicada</span>
+            </a>
+
+            <a class="card card--p4c" href="p4c.html">
+              <div class="card__icon" aria-hidden="true">🏢</div>
+              <div class="card__body">
+                <h3>Programa Plug for Charge</h3>
+                <p>
+                  Monitore os pontos corporativos com métricas de energia e
+                  alertas operacionais.
+                </p>
+              </div>
+              <span class="card__tag">Operação</span>
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <small>© 2024 InCharge. Todos os direitos reservados.</small>
+      </footer>
+    </div>
+  </body>
+</html>
