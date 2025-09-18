@@ -1,250 +1,127 @@
-/* Reset e base */
-:root {
-  --bg-01: #020617;
-  --bg-02: #061228;
-  --bg-03: #0f172a;
-  --surface-strong: rgba(11, 20, 38, 0.88);
-  --surface-soft: rgba(15, 23, 42, 0.65);
-  --border-soft: rgba(148, 163, 184, 0.22);
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5f5;
-  --text-muted: #94a3b8;
-  --accent-vale: #38bdf8;
-  --accent-sul: #22c55e;
-  --accent-vertentes: #fbbf24;
-  --accent-hubs: #ff585b; /* Cor principal ajustada para o tom de vermelho */
-  --shadow-lg: 0 28px 56px rgba(2, 6, 23, 0.55);
-  --font-main: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+:root{
+  --primary:#ff585b;
+  --primary-dark:#e34a4d;
+  --primary-weak:#ff8a8c;
+  --teal:#4ecdc4;
+  --bg-1:#1a1a2e;
+  --bg-2:#16213e;
+  --bg-3:#0f3460;
+  --text:#ffffff;
+  --muted:#a0a0a0;
+  --glass:rgba(255,255,255,.06);
+  --border:rgba(255,255,255,.12);
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
 
-body {
-  font-family: var(--font-main);
-  color: var(--text-primary);
-  line-height: 1.6;
-  background-color: #f5f5f5;
-  min-height: 100vh;
-  padding-bottom: 48px;
+body{
+  font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color:var(--text);
   background:
-    radial-gradient(circle at 20% 15%, rgba(56, 189, 248, 0.22), transparent 55%),
-    radial-gradient(circle at 80% 20%, rgba(192, 132, 252, 0.24), transparent 60%),
-    linear-gradient(160deg, var(--bg-01) 0%, var(--bg-02) 50%, var(--bg-03) 100%);
+    radial-gradient(1200px 600px at -10% -10%, rgba(255,88,91,.22), transparent 60%),
+    radial-gradient(1000px 600px at 110% -10%, rgba(255,138,140,.15), transparent 60%),
+    linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-3) 100%);
+  overflow:hidden; /* sem scroll */
+  padding:16px;
 }
+
+/* Botão Voltar */
+.btn-back{
+  position:fixed; top:14px; left:14px; z-index:20;
+  text-decoration:none; color:#fff;
+  background:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  padding:10px 14px; border-radius:999px; font-weight:700; letter-spacing:.02em;
+  box-shadow:0 8px 20px rgba(255,88,91,.35);
+  transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+.btn-back:hover{ transform:translateY(-1px); filter:brightness(1.03); box-shadow:0 10px 26px rgba(255,88,91,.45) }
 
 /* Cabeçalho */
-h1 {
-  width: min(1180px, 100% - 32px);
-  margin: 32px auto 0;
-  padding: clamp(18px, 4vw, 28px);
-  border-radius: 24px;
-  text-align: center;
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.92), rgba(34, 197, 94, 0.9));
-  color: white;
-  font-size: clamp(1.6rem, 4vw, 2.3rem);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  box-shadow: 0 24px 48px rgba(13, 148, 136, 0.32);
+header{ display:flex; flex-direction:column; align-items:center; gap:6px; margin-top:6px; margin-bottom:10px }
+h1{
+  font-size:clamp(1.6rem, 2.6vw, 2.2rem);
+  line-height:1.1; text-align:center; font-weight:800; letter-spacing:.04em;
+  background:linear-gradient(90deg, var(--primary), var(--primary-weak));
+  -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  text-shadow:0 0 28px rgba(255,88,91,.28);
+}
+#last-update{ font-size:.9rem; color:var(--muted); font-style:italic; text-align:center }
+
+/* Legenda enxuta */
+.legend{
+  background:var(--glass); border:1px solid var(--border);
+  border-radius:14px; padding:10px 14px; width:max(280px, 70%);
+  margin:6px auto 10px; box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+.legend h2{ display:none }
+.legend-container{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px }
+.legend-item{ display:flex; align-items:center; gap:8px; font-size:.95rem }
+.legend-color{ width:18px; height:18px; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,.3) }
+
+/* Root escalável para caber na tela */
+.scale-root{
+  transform-origin: top center;
+  transition: transform .12s ease;
+  width:100%;
+  display:grid; grid-template-rows:auto 1fr; row-gap:8px;
 }
 
-#last-update {
-  width: min(1180px, 100% - 32px);
-  margin: 12px auto 0;
-  text-align: center;
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  font-style: italic;
-}
+.main-container{ max-width:1600px; margin:0 auto; width:100% }
 
-/* Layout */
-.main-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 20px;
-  gap: 20px;
-  width: min(1180px, 100% - 32px);
-  margin: 32px auto 0;
-  grid-template-columns: minmax(220px, 260px) 1fr;
-  gap: 24px;
-  align-items: start;
-}
-
-/* Locais */
-.locations-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-  flex: 1;
+.locations-container{
+  display:grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
+  gap:14px; align-content:start;
 }
 
-.city-column {
-  padding: 48px 24px 24px;
-  width: 220px;
-  border-radius: 24px;
-  background: var(--surface-soft);
-  box-shadow: var(--shadow-lg);
-  backdrop-filter: blur(12px);
-  position: relative;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  --accent-color: var(--accent-sul);
-  --region-label: "";
-  --region-display: none;
+.city-column{
+  background:var(--glass);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:14px;
+  box-shadow:0 10px 32px rgba(0,0,0,.24);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.city-column:hover{ transform:translateY(-3px); box-shadow:0 14px 40px rgba(0,0,0,.32) }
+
+.city-column h2{ margin:0 0 10px 0; font-size:1.05rem; text-align:center; font-weight:800; letter-spacing:.04em }
+.city-column h2 a{
+  color:var(--primary); text-decoration:none; display:inline-flex; align-items:center; gap:6px;
+  padding:6px 12px; border-radius:999px; border:1px dashed rgba(255,88,91,.35);
+  background:rgba(255,88,91,.06);
+  transition: filter .15s ease, border-color .15s ease;
+}
+.city-column h2 a:hover{ filter:brightness(1.1); border-color:rgba(255,88,91,.6) }
+
+.titleCidade{
+  color:var(--teal); font-size:.9rem; font-weight:700;
+  margin:8px 0 8px; padding:6px; background:rgba(78,205,196,.10);
+  border-radius:8px; text-align:center; letter-spacing:.06em;
 }
 
-.city-column::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.18), transparent 60%);
-  opacity: 0.35;
-  pointer-events: none;
+.containerInfo{ display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:8px }
+.containerInfo a{ text-decoration:none; color:#fff }
+
+.chargerInfo{
+  padding:12px; border-radius:10px; text-align:center; font-weight:800; font-size:.88rem;
+  letter-spacing:.06em; text-transform:uppercase; cursor:pointer; position:relative; overflow:hidden;
+  box-shadow:0 4px 14px rgba(0,0,0,.25); transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
 }
+.chargerInfo::before{ content:"⚡"; position:absolute; top:4px; right:8px; font-size:.8rem; opacity:.6 }
+.chargerInfo:hover{ transform:scale(1.035); box-shadow:0 8px 22px rgba(0,0,0,.32); filter:brightness(1.05) }
 
-.city-column h2 {
-  margin: 36px 0 16px;
-  color: red;
-  font-size: 16px;
-  text-align: center;
-}
+/* Cores por status */
+.chargerInfo.is-available{ background:linear-gradient(135deg,#4caf50,#66bb6a) }
+.chargerInfo.is-preparing{ background:linear-gradient(135deg,#006400,#228b22) }
+.chargerInfo.is-finishing{ background:linear-gradient(135deg,#ffd700,#ffeb3b); color:#1a1a1a }
+.chargerInfo.is-charging{ background:linear-gradient(135deg,var(--primary),var(--primary-dark)) }
+.chargerInfo.is-offline{ background:linear-gradient(135deg,#2c2c2c,#1a1a1a); opacity:.6 }
 
-.city-column h2:first-of-type {
-  margin-top: 48px;
-}
+.loading{ text-align:center; color:var(--muted); padding:8px }
 
-.city-column h2 a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 18px;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: rgba(15, 23, 42, 0.72);
-  color: var(--text-primary);
-  text-decoration: none;
-  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.city-column h2 a:hover {
-  border-color: var(--accent-color);
-  color: var(--accent-color);
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.22);
-}
-
-.titleCidade {
-  margin: 6px 0;
-  font-size: 12px;
-  text-align: center;
-  letter-spacing: 0.18em;
-  color: var(--text-muted);
-}
-
-.titleCidade::before {
-  content: "";
-  display: block;
-  width: 56px;
-  height: 2px;
-  margin: 0 auto 10px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-  opacity: 0.65;
-}
-
-.containerInfo {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
-  gap: 12px;
-}
-
-.chargerInfo {
-  padding: 10px;
-  background-color: var(--accent-hubs);
-  border-radius: 18px;
-  color: white;
-  font-weight: bold;
-  display: grid;
-  place-items: center;
-  height: 68px;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 18px 30px rgba(2, 6, 23, 0.45);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-}
-
-.chargerInfo:hover {
-  transform: scale(1.05);
-  box-shadow: 0 24px 38px rgba(2, 6, 23, 0.6);
-  filter: brightness(1.08);
-}
-
-.city-column:nth-of-type(1) {
-  --accent-color: var(--accent-vale);
-  --region-label: "Vale do Paraíba · SP";
-  --region-display: inline-flex;
-}
-
-.city-column:nth-of-type(2) {
-  --accent-color: var(--accent-sul);
-  --region-label: "Sul de Minas · MG";
-  --region-display: inline-flex;
-}
-
-.city-column:nth-of-type(3) {
-  --accent-color: var(--accent-vertentes);
-  --region-label: "Campo das Vertentes · MG";
-  --region-display: inline-flex;
-}
-
-.city-column:nth-of-type(4) {
-  --accent-color: var(--accent-hubs);
-  --region-label: "Hubs Individuais · MG";
-  --region-display: inline-flex;
-}
-
-.pagina-condominios .locations-container {
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
-
-.pagina-condominios .city-column {
-  --accent-color: #60a5fa;
-  border-top: 3px solid transparent;
-}
-
-/* Responsividade */
-@media (max-width: 980px) {
-  .main-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 640px) {
-  h1 {
-    font-size: clamp(1.45rem, 5vw, 1.9rem);
-  }
-
-  .city-column {
-    padding: 44px 20px 20px;
-  }
-
-  .containerInfo {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-  }
+/* Mobile (o JS reduz o scale para caber sem scroll) */
+@media (max-width:820px){
+  .legend{ width:95% }
+  .containerInfo{ grid-template-columns:1fr }
 }
