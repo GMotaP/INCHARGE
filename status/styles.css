@@ -17,10 +17,10 @@ body{
   color:var(--text);
   /* Fundo cinza/vermelho a partir do #ff8a8c */
   background:
-    radial-gradient(1000px 520px at 12% 0%, rgba(255,138,140,0.22), transparent 60%),
+    radial-gradient(1000px 520px at 12% 0%, rgba(255,138,140,0.22), transparent 60%), //
     radial-gradient(820px 480px at 92% 4%, rgba(255,138,140,0.14), transparent 65%),
     /* degrade principal cinza/vermelho */
-    linear-gradient(135deg, #ff8a8c 0%, #8e949c 42%, #3d434c 100%);
+    linear-gradient(135deg, #ff8a8c 7%, #8e949c 35%, #3d434c 100%);
   overflow:hidden; /* mantém sem scroll */
   padding:16px;
 }
