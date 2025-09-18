@@ -1,43 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Status dos Carregadores</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <h1>Status dos Carregadores</h1>
-    <p id="last-update" style="text-align: center; margin-top: 10px; font-style: italic;"></p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Status dos Carregadores</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="btn-back" href="https://gmotap.github.io/INCHARGE/">← Voltar</a>
 
-    <div class="main-container">
-      <div class="legend">
-        <h2>Legenda</h2>
+  <header>
+    <h1>Status dos Carregadores</h1>
+    <p id="last-update"></p>
+  </header>
+
+  <!-- raiz que será escalada para caber no viewport -->
+  <div id="scale-root" class="scale-root">
+    <div class="legend">
+      <div class="legend-container">
         <div class="legend-item">
-          <div class="legend-color" style="background-color: #4caf50"></div>
+          <div class="legend-color" style="background:linear-gradient(135deg,#4caf50,#66bb6a)"></div>
           <span>Disponível</span>
         </div>
         <div class="legend-item">
-          <div class="legend-color" style="background-color: #006400"></div>
+          <div class="legend-color" style="background:linear-gradient(135deg,#006400,#228b22)"></div>
           <span>Preparando</span>
         </div>
         <div class="legend-item">
-          <div class="legend-color" style="background-color: #ffff00"></div>
+          <div class="legend-color" style="background:linear-gradient(135deg,#ffd700,#ffeb3b)"></div>
           <span>Finalizando</span>
         </div>
         <div class="legend-item">
-          <div class="legend-color" style="background-color: #ff585b"></div>
+          <div class="legend-color" style="background:linear-gradient(135deg,var(--primary),var(--primary-dark))"></div>
           <span>Carregando</span>
         </div>
         <div class="legend-item">
-          <div class="legend-color" style="background-color: black; opacity: 0.5"></div>
+          <div class="legend-color" style="background:linear-gradient(135deg,#2c2c2c,#1a1a1a);opacity:.6"></div>
           <span>Offline</span>
         </div>
       </div>
-
-      <div class="locations-container" id="locations"></div>
     </div>
 
-    <script src="script.js"></script>
-  </body>
+    <div class="main-container">
+      <div class="locations-container" id="locations">
+        <div class="loading">Carregando informações dos carregadores...</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
