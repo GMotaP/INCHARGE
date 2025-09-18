@@ -3,11 +3,8 @@
   --primary-dark:#e34a4d;
   --primary-weak:#ff8a8c;
   --teal:#4ecdc4;
-  --bg-1:#1a1a2e;
-  --bg-2:#16213e;
-  --bg-3:#0f3460;
   --text:#ffffff;
-  --muted:#a0a0a0;
+  --muted:#f1d6d7;
   --glass:rgba(255,255,255,.06);
   --border:rgba(255,255,255,.12);
 }
@@ -18,10 +15,11 @@ html,body{height:100%}
 body{
   font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color:var(--text);
+  /* Fundo avermelhado */
   background:
-    radial-gradient(1200px 600px at -10% -10%, rgba(255,88,91,.22), transparent 60%),
-    radial-gradient(1000px 600px at 110% -10%, rgba(255,138,140,.15), transparent 60%),
-    linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-3) 100%);
+    radial-gradient(1200px 600px at -10% -10%, rgba(255,88,91,.18), transparent 60%),
+    radial-gradient(1000px 600px at 110% -10%, rgba(255,138,140,.12), transparent 60%),
+    linear-gradient(135deg, #5e0f13 0%, #8a1f25 42%, #ff585b 100%);
   overflow:hidden; /* sem scroll */
   padding:16px;
 }
@@ -37,18 +35,30 @@ body{
 }
 .btn-back:hover{ transform:translateY(-1px); filter:brightness(1.03); box-shadow:0 10px 26px rgba(255,88,91,.45) }
 
-/* Cabeçalho */
-header{ display:flex; flex-direction:column; align-items:center; gap:6px; margin-top:6px; margin-bottom:10px }
+/* Cabeçalho + logo */
+header{ display:flex; flex-direction:column; align-items:center; gap:8px; margin-top:6px; margin-bottom:10px }
+
+.brand{
+  width:min(240px, 40vw);
+  height:48px;              /* altura reservada ao logo */
+  background-image:url('incharge.png');
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:contain;
+  opacity:.95;
+  filter:drop-shadow(0 6px 18px rgba(0,0,0,.28));
+}
+
 h1{
   font-size:clamp(1.6rem, 2.6vw, 2.2rem);
   line-height:1.1; text-align:center; font-weight:800; letter-spacing:.04em;
-  background:linear-gradient(90deg, var(--primary), var(--primary-weak));
+  background:linear-gradient(90deg, #fff, #ffe4e5);
   -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
   text-shadow:0 0 28px rgba(255,88,91,.28);
 }
 #last-update{ font-size:.9rem; color:var(--muted); font-style:italic; text-align:center }
 
-/* Legenda enxuta */
+/* Legenda */
 .legend{
   background:var(--glass); border:1px solid var(--border);
   border-radius:14px; padding:10px 14px; width:max(280px, 70%);
@@ -59,7 +69,7 @@ h1{
 .legend-item{ display:flex; align-items:center; gap:8px; font-size:.95rem }
 .legend-color{ width:18px; height:18px; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,.3) }
 
-/* Root escalável para caber na tela */
+/* Root escalável */
 .scale-root{
   transform-origin: top center;
   transition: transform .12s ease;
@@ -85,14 +95,15 @@ h1{
 }
 .city-column:hover{ transform:translateY(-3px); box-shadow:0 14px 40px rgba(0,0,0,.32) }
 
+/* Nome dos locais em BRANCO */
 .city-column h2{ margin:0 0 10px 0; font-size:1.05rem; text-align:center; font-weight:800; letter-spacing:.04em }
 .city-column h2 a{
-  color:var(--primary); text-decoration:none; display:inline-flex; align-items:center; gap:6px;
-  padding:6px 12px; border-radius:999px; border:1px dashed rgba(255,88,91,.35);
-  background:rgba(255,88,91,.06);
+  color:#ffffff; text-decoration:none; display:inline-flex; align-items:center; gap:6px;
+  padding:6px 12px; border-radius:999px; border:1px dashed rgba(255,255,255,.5);
+  background:rgba(255,255,255,.08);
   transition: filter .15s ease, border-color .15s ease;
 }
-.city-column h2 a:hover{ filter:brightness(1.1); border-color:rgba(255,88,91,.6) }
+.city-column h2 a:hover{ filter:brightness(1.05); border-color:rgba(255,255,255,.85) }
 
 .titleCidade{
   color:var(--teal); font-size:.9rem; font-weight:700;
@@ -101,6 +112,7 @@ h1{
 }
 
 .containerInfo{ display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:8px }
+.containerInfo.cols-3{ grid-template-columns:repeat(3,1fr) } /* 3 plugs => 3 colunas */
 .containerInfo a{ text-decoration:none; color:#fff }
 
 .chargerInfo{
@@ -108,7 +120,7 @@ h1{
   letter-spacing:.06em; text-transform:uppercase; cursor:pointer; position:relative; overflow:hidden;
   box-shadow:0 4px 14px rgba(0,0,0,.25); transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
 }
-.chargerInfo::before{ content:"⚡"; position:absolute; top:4px; right:8px; font-size:.8rem; opacity:.6 }
+/* removido o ícone ⚡ */
 .chargerInfo:hover{ transform:scale(1.035); box-shadow:0 8px 22px rgba(0,0,0,.32); filter:brightness(1.05) }
 
 /* Cores por status */
@@ -118,10 +130,11 @@ h1{
 .chargerInfo.is-charging{ background:linear-gradient(135deg,var(--primary),var(--primary-dark)) }
 .chargerInfo.is-offline{ background:linear-gradient(135deg,#2c2c2c,#1a1a1a); opacity:.6 }
 
-.loading{ text-align:center; color:var(--muted); padding:8px }
+.loading{ text-align:center; color:#ffe3e4; padding:8px }
 
-/* Mobile (o JS reduz o scale para caber sem scroll) */
+/* Mobile */
 @media (max-width:820px){
   .legend{ width:95% }
   .containerInfo{ grid-template-columns:1fr }
+  .containerInfo.cols-3{ grid-template-columns:1fr } /* em telas pequenas, 1 coluna para legibilidade */
 }
