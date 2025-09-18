@@ -15,14 +15,16 @@ html,body{height:100%}
 body{
   font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color:var(--text);
-  /* Fundo avermelhado */
+  /* Fundo cinza/vermelho a partir do #ff8a8c */
   background:
-    radial-gradient(1200px 600px at -10% -10%, rgba(255,88,91,.18), transparent 60%),
-    radial-gradient(1000px 600px at 110% -10%, rgba(255,138,140,.12), transparent 60%),
-    linear-gradient(135deg, #5e0f13 0%, #8a1f25 42%, #ff585b 100%);
-  overflow:hidden; /* sem scroll */
+    radial-gradient(1000px 520px at 12% 0%, rgba(255,138,140,0.22), transparent 60%),
+    radial-gradient(820px 480px at 92% 4%, rgba(255,138,140,0.14), transparent 65%),
+    /* degrade principal cinza/vermelho */
+    linear-gradient(135deg, #ff8a8c 0%, #8e949c 42%, #3d434c 100%);
+  overflow:hidden; /* mantém sem scroll */
   padding:16px;
 }
+
 
 /* Botão Voltar */
 .btn-back{
