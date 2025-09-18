@@ -67,6 +67,12 @@ function createLocationColumn(cityName, keys, data, link){
     container.className = "containerInfo";
 
     const chargers = data[key] || [];
+
+    /* 3 plugs => usa 3 colunas para ocupar todo o retângulo */
+    if (chargers.length === 3) {
+      container.classList.add('cols-3');
+    }
+
     if(chargers.length === 0){
       const p = document.createElement("p");
       p.className="loading"; p.textContent="Carregando dados...";
@@ -97,7 +103,7 @@ function createGroupedColumn(group){
   col.className="city-column";
 
   const title = document.createElement("h2");
-  title.innerHTML = `<span style="color:var(--primary);background:rgba(255,88,91,.08);padding:6px 12px;border-radius:999px;border:1px dashed rgba(255,88,91,.35)">${group.name}</span>`;
+  title.innerHTML = `<span style="color:#ffffff;background:rgba(255,255,255,.08);padding:6px 12px;border-radius:999px;border:1px dashed rgba(255,255,255,.5)">${group.name}</span>`;
   col.appendChild(title);
 
   group.children.forEach(loc=>{
@@ -118,6 +124,12 @@ function createGroupedColumn(group){
       container.className="containerInfo";
 
       const chargers = (globalData[key] || []);
+
+      /* 3 plugs => 3 colunas */
+      if (chargers.length === 3) {
+        container.classList.add('cols-3');
+      }
+
       if(chargers.length === 0){
         const p=document.createElement("p"); p.className="loading"; p.textContent="Carregando dados...";
         container.appendChild(p);
@@ -152,7 +164,7 @@ function atualizarHorario(){
 
 /* Escala automática para caber no viewport */
 function fitToViewport(){
-  scaleRoot.style.transform = `scale(1)`; // mede no tamanho natural
+  scaleRoot.style.transform = `scale(1)`; // mede no natural
   const margin = 8;
 
   const rect = scaleRoot.getBoundingClientRect();
