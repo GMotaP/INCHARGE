@@ -4,18 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>InCharge - Home</title>
+    <meta name="description" content="Monitore desempenho e disponibilidade dos carregadores INCHARGE em tempo real.">
+    <meta name="theme-color" content="#ff585b">
+
+    <!-- Fonte Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
     <div class="page">
       <header class="topbar">
         <a class="brand" href="index.html" aria-label="InCharge">
           <span class="brand__mark" aria-hidden="true">IC</span>
-          <span class="brand__text">InCharge</span>
+          <span class="brand__text">INCHARGE</span>
         </a>
 
         <nav class="topbar__nav" aria-label="Principais páginas">
-          <a class="topbar__link" href="./status/">Status</a>
+          <a class="topbar__link" href="status.html">Status</a>
           <a class="topbar__link" href="condominio.html">Condomínios</a>
           <a class="topbar__link" href="p4c.html">P4C</a>
         </nav>
@@ -23,11 +33,11 @@
         <a class="button button--ghost" href="status.html">Entrar no painel</a>
       </header>
 
-      <main class="content">
+      <main id="conteudo" class="content">
         <section class="hero">
           <div class="hero__content">
             <span class="hero__pill">Monitoramento inteligente</span>
-            <h1>Controle total da rede de carregadores InCharge</h1>
+            <h1>Controle total da rede de carregadores INCHARGE</h1>
             <p>
               Acompanhe desempenho, disponibilidade e alertas em tempo real para
               cada ponto de carregamento distribuído no país.
@@ -42,49 +52,50 @@
               </a>
             </div>
 
-            <dl class="hero__metrics">
-              <div class="hero__metric">
-                <dt>Carregadores ativos</dt>
-                <dd>+120</dd>
-              </div>
-              <div class="hero__metric">
-                <dt>Cidades atendidas</dt>
-                <dd>18</dd>
-              </div>
-              <div class="hero__metric">
-                <dt>Disponibilidade média</dt>
-                <dd>97%</dd>
-              </div>
-            </dl>
+            <!-- Métricas podem continuar estáticas ou serem dinamizadas depois -->
+            <ul class="hero__metrics" role="list">
+              <li class="hero__metric">
+                <span class="metric__label">Carregadores ativos</span>
+                <strong class="metric__value">+10</strong>
+              </li>
+              <li class="hero__metric">
+                <span class="metric__label">Cidades atendidas</span>
+                <strong class="metric__value">18</strong>
+              </li>
+              <li class="hero__metric">
+                <span class="metric__label">Disponibilidade média</span>
+                <strong class="metric__value">97%</strong>
+              </li>
+            </ul>
           </div>
 
-          <div class="hero__preview" aria-hidden="true">
-            <article class="preview-card">
+          <div class="hero__preview" aria-hidden="false">
+            <article class="preview-card" aria-labelledby="titulo-status">
               <header class="preview-card__header">
                 <span class="preview-card__badge">Resumo em tempo real</span>
-                <h2>Status dos Carregadores</h2>
+                <h2 id="titulo-status">Status dos Carregadores</h2>
               </header>
 
               <ul class="preview-card__list">
                 <li>
-                  <span class="dot dot--online"></span>
+                  <span class="dot dot--online" aria-hidden="true"></span>
                   <span>Disponíveis</span>
-                  <strong>82</strong>
+                  <strong class="js-count-available">0</strong>
                 </li>
                 <li>
-                  <span class="dot dot--charging"></span>
+                  <span class="dot dot--charging" aria-hidden="true"></span>
                   <span>Em carga</span>
-                  <strong>27</strong>
+                  <strong class="js-count-charging">0</strong>
                 </li>
                 <li>
-                  <span class="dot dot--attention"></span>
-                  <span>Necessitam atenção</span>
-                  <strong>5</strong>
+                  <span class="dot dot--offline" aria-hidden="true"></span>
+                  <span>Offline</span>
+                  <strong class="js-count-offline">0</strong>
                 </li>
               </ul>
 
-              <footer class="preview-card__footer">
-                Atualizado há 2 minutos
+              <footer class="preview-card__footer" aria-live="polite" aria-atomic="true">
+                Atualizado agora
               </footer>
             </article>
           </div>
@@ -143,5 +154,7 @@
         <small>© 2024 InCharge. Todos os direitos reservados.</small>
       </footer>
     </div>
+
+    <script defer src="index.js"></script>
   </body>
 </html>
