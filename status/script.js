@@ -20,7 +20,7 @@ const locations = [
     name:"Unidades Individuais",
     children:[
       { name:"Santa Rita do Sapucaí - MG", keys:santaRita, link:"https://www.google.com.br/maps/place/INCHARGE+Santa+Rita" },
-      { name:"Itajubá - ITACAR", keys:itajuba, link:"https://www.google.com.br/maps/place/Itajubá+ITACAR" },
+      { name:"Itajubá - ITACAR", keys:itajuba, link:"https://www.google.com.br/maps/place/Itajubá+ITACAR" }
     ]
   }
 ];
@@ -40,6 +40,7 @@ function getStatusClass(status, online){
 function getPaymentLink(key, plug){
   const upper = key.toUpperCase();
   if(upper === "PC106")  return `https://pay4charge.com/now/PC106/${plug}`;
+  // Mantido suporte ao P4C006, embora não seja mais usado:
   if(upper === "P4C006") return `https://pay4charge.com/now/P4C006/${plug}`;
   return `https://pay.incharge.app/now/${upper}/${plug}`;
 }
@@ -183,7 +184,15 @@ let globalData = {};
 async function getAllData(){
   locationsContainer.innerHTML = "";
 
-  const allKeys = [...saoJose, ...tresCoracoes, ...carmopolis, ...aparecida, ...santaRita, ...itajuba, ...divinopolis];
+  const allKeys = [
+    ...saoJose,
+    ...tresCoracoes,
+    ...carmopolis,
+    ...aparecida,
+    ...santaRita,
+    ...itajuba
+  ];
+
   const urls = allKeys.map(key => ({key, url:`https://api.incharge.app/api/v2/now/${key}`}));
 
   const responses = await Promise.all(
@@ -196,7 +205,7 @@ async function getAllData(){
   );
 
   globalData = {};
-  responses.forEach(r => { globalData[r.key] = r.data });
+  responses.forEach(r => { globalData[r.key] = r.data; });
 
   locations.forEach(loc=>{
     if(loc.group) createGroupedColumn(loc);
