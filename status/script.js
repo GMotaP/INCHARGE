@@ -9,7 +9,6 @@ const carmopolis = ["inc237","inc238","inc239"];
 const aparecida = ["inc247","inc248","inc249"];
 const santaRita = ["inc241"];
 const itajuba = ["pc106"];
-const divinopolis = ["p4c006"];
 
 const locations = [
   { name:"São José dos Campos - SP", keys:saoJose, link:"https://www.google.com.br/maps/place/PIT+-+Parque+de+Inovação+Tecnológica+São+José+dos+Campos" },
@@ -22,7 +21,6 @@ const locations = [
     children:[
       { name:"Santa Rita do Sapucaí - MG", keys:santaRita, link:"https://www.google.com.br/maps/place/INCHARGE+Santa+Rita" },
       { name:"Itajubá - ITACAR", keys:itajuba, link:"https://www.google.com.br/maps/place/Itajubá+ITACAR" },
-      { name:"Divinópolis - AGL", keys:divinopolis, link:"https://www.google.com.br/maps/place/Divinópolis+AGL" }
     ]
   }
 ];
