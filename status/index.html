@@ -4,20 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Status dos Carregadores</title>
-  <link rel="stylesheet" href="styles.css">
+  <!-- AJUSTE: nome do arquivo exatamente igual ao que está no repositório -->
+  <!-- Se o arquivo chama "Style.css", use "Style.css". Se for "styles.css", troque abaixo. -->
+  <link rel="stylesheet" href="Style.css">
 </head>
 <body>
   <a class="btn-back" href="https://gmotap.github.io/INCHARGE/">← Voltar</a>
 
   <header>
-    <!-- Espaço do logo (usa incharge.png como background, se existir) -->
     <div class="brand" aria-label="INCHARGE logo"></div>
-
     <h1>Status dos Carregadores</h1>
     <p id="last-update"></p>
   </header>
 
-  <!-- raiz que será escalada para caber no viewport -->
   <div id="scale-root" class="scale-root">
     <div class="legend">
       <div class="legend-container">
@@ -51,6 +50,7 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- AJUSTE: "defer" garante que o DOM exista quando o script executar -->
+  <script src="script.js" defer></script>
 </body>
 </html>
