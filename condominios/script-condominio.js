@@ -15,7 +15,8 @@ const condominiosIndividuais = [
   { nome: "EDIFICIO OIAPOQUE", incs: ["INC015", "INC149", "INC159", "INC161", "INC167", "INC175", "INC242", "INC016", "INC110", "INC150", "INC160", "iNC194", "INC246", "INC111", "INC112", "INC113", "INC114", "INC116", "INC115", "INC172", "INC174", "INC169"] },
   { nome: "Edificio Parc Devant", incs: ["INC177", "INC188", "INC199", "INC200", "INC256", "INC176", "INC193", "INC260", "INC259", "INC178", "INC186", "INC187", "INC189", "INC190", "INC191", "INC192", "INC300"] },
   { nome: "ETERN", incs: ["INC221", "INC220", "INC295", "INC284"] },
-  { nome: "VILA NOVA RESERVED", incs: ["INC272", "INC271", "INC273", "INC275", "INC276", "INC301", "INC274", "INC277", "INC279", "INC281", "INC278", "IN280"] }
+  { nome: "VILA NOVA RESERVED", incs: ["INC272", "INC271", "INC273", "INC275", "INC276", "INC301", "INC274", "INC277", "INC279", "INC281", "INC278", "IN280"] },
+  { nome: "Condomínio Reserva do Golf", incs: ["INC140", "INC142", "INC132", "INC143"] }
 ];
 
 const condominiosAgrupados = [
@@ -32,8 +33,24 @@ const condominiosAgrupados = [
   { nome: "Edifício Le Rêve Exto", incs: ["INC222", "INC223"] },
   { nome: "INSPIRE IBIRAPUERA", incs: ["INC254", "INC255"] },
   { nome: "INSIGHT VILA LEOPOLDINA", incs: ["INC026", "INC020"] },
-  { nome: "Plaza de España", incs: ["INC229", "INC230"] }
+  { nome: "Plaza de España", incs: ["INC229", "INC230"] },
+  { nome: "Conjunto Comercial Casablanca", incs: ["INC005", "INC006"] },
+  { nome: "Condomínio Premiere", incs: ["INC128"] },
+  { nome: "Edifício Residencial Uplife Conceição", incs: ["INC117"] },
+  { nome: "Edifício Residencial Upcon Cínquo", incs: ["INC118"] },
+  { nome: "Estacionamento Statement", incs: ["INC198", "INC227", "INC228"] },
+  { nome: "Sintonia Perdizes", incs: ["INC231", "INC232"] },
+  { nome: "MODERN", incs: ["INC264"] },
+  { nome: "MELO ALVES 645", incs: ["INC268", "INC269"] },
+  { nome: "SIGNAT", incs: ["INC285"] },
+  { nome: "GRAND PAYSAGE", incs: ["INC287", "INC288"] },
+  { nome: "LOOMI", incs: ["INC296"] },
+  { nome: "Paulista Home Resort", incs: ["INC309", "INC310", "INC311"] },
+  { nome: "Supermercado Alabarce", incs: ["INC109", "INC108"] },
+  { nome: "Praça Perdizes", incs: ["INC328", "INC336", "INC341"] },
+  { nome: "Raízes Guilhermina Esperança", incs: ["INC344"] }
 ];
+
 
 // guarda o último dataset retornado da API
 let ultimoData = {};
