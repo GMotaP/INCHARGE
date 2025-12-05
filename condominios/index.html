@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Status dos Carregadores - Condomínios</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="pagina-condominios">
+    <!-- Botão Voltar (usa .btn-back do CSS) -->
+    <a href="index.html" class="btn-back">← Voltar</a>
+
+    <div class="scale-root">
+      <!-- Cabeçalho com logo + título + última atualização -->
+      <header>
+        <div class="brand" aria-label="INCHARGE"></div>
+        <h1>Status dos Carregadores - Condomínios</h1>
+        <p id="last-update"></p>
+      </header>
+
+      <main class="main-container">
+        <!-- Barra de filtro de condomínio -->
+        <section class="controls">
+          <div class="filter-bar">
+            <label for="condo-filter">Filtrar condomínio:</label>
+            <select id="condo-filter"></select>
+          </div>
+        </section>
+
+        <!-- Legenda de status -->
+        <section class="legend-section">
+          <div class="legend" aria-label="Legenda de status dos carregadores">
+            <h2>Legenda</h2>
+            <div class="legend-container">
+              <div class="legend-item">
+                <div class="legend-color" style="background-color: #4caf50;"></div>
+                <span>Disponível</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color" style="background-color: #006400;"></div>
+                <span>Preparando</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color" style="background-color: #ffff00;"></div>
+                <span>Finalizando</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color" style="background-color: #ff585b;"></div>
+                <span>Carregando</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color" style="background-color: black; opacity: 0.5;"></div>
+                <span>Offline</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Onde o JS vai injetar os cartões de condomínio/carregadores -->
+        <section class="locations-section">
+          <div class="locations-container" id="locations"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script-condominio.js"></script>
+  </body>
+</html>

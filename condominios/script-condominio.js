@@ -1,5 +1,6 @@
 const locationsContainer = document.getElementById("locations");
 const updateTimeElement = document.getElementById("last-update");
+const filterSelect = document.getElementById("condo-filter");
 
 const condominiosIndividuais = [
   { nome: "Cond Iman Vila Mariana", incs: ["INC101", "INC258", "INC243", "INC102"] },
@@ -33,6 +34,11 @@ const condominiosAgrupados = [
   { nome: "INSIGHT VILA LEOPOLDINA", incs: ["INC026", "INC020"] },
   { nome: "Plaza de España", incs: ["INC229", "INC230"] }
 ];
+
+// guarda o último dataset retornado da API
+let ultimoData = {};
+// guarda o filtro atual ("all" ou nome do condomínio)
+let filtroSelecionado = "all";
 
 function getStatusColor(status, online) {
   if (online === 0) return "black";
@@ -145,17 +151,78 @@ function createGroupedColumn(grupo, data) {
 
 function atualizarHorario() {
   const agora = new Date();
-  const hora = agora.toLocaleTimeString("pt-BR", { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  const hora = agora.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
   const data = agora.toLocaleDateString("pt-BR");
   if (updateTimeElement) {
     updateTimeElement.textContent = `Última atualização: ${data} às ${hora}`;
   }
 }
 
-async function getAllData() {
+// popula o <select> com todos os condomínios
+function popularFiltro() {
+  if (!filterSelect) return;
+
+  // opção "Todos"
+  const optTodos = document.createElement("option");
+  optTodos.value = "all";
+  optTodos.textContent = "Todos os condomínios";
+  filterSelect.appendChild(optTodos);
+
+  const optGroupInd = document.createElement("optgroup");
+  optGroupInd.label = "Condomínios Individuais";
+  condominiosIndividuais.forEach((c) => {
+    const opt = document.createElement("option");
+    opt.value = c.nome;
+    opt.textContent = c.nome;
+    optGroupInd.appendChild(opt);
+  });
+  filterSelect.appendChild(optGroupInd);
+
+  const optGroupAgr = document.createElement("optgroup");
+  optGroupAgr.label = "Condomínios Agrupados";
+  condominiosAgrupados.forEach((c) => {
+    const opt = document.createElement("option");
+    opt.value = c.nome;
+    opt.textContent = c.nome;
+    optGroupAgr.appendChild(opt);
+  });
+  filterSelect.appendChild(optGroupAgr);
+
+  filterSelect.addEventListener("change", () => {
+    filtroSelecionado = filterSelect.value;
+    renderCondominios();
+  });
+}
+
+// desenha na tela de acordo com o filtro atual
+function renderCondominios() {
   locationsContainer.innerHTML = "";
 
-  const allIncs = [...condominiosIndividuais, ...condominiosAgrupados].flatMap(c => c.incs);
+  if (filtroSelecionado === "all") {
+    // visão original: todos os individuais + agrupados juntos
+    condominiosIndividuais.forEach((c) => {
+      createLocationColumn(c.nome, c.incs, ultimoData);
+    });
+    createGroupedColumn(condominiosAgrupados, ultimoData);
+  } else {
+    // tentar achar entre os individuais
+    const condIndividual = condominiosIndividuais.find((c) => c.nome === filtroSelecionado);
+    if (condIndividual) {
+      createLocationColumn(condIndividual.nome, condIndividual.incs, ultimoData);
+      return;
+    }
+
+    // se não achou, procura entre os agrupados
+    const condAgr = condominiosAgrupados.find((c) => c.nome === filtroSelecionado);
+    if (condAgr) {
+      // passa como array com um só para reutilizar a função
+      createGroupedColumn([condAgr], ultimoData);
+    }
+  }
+}
+
+async function getAllData() {
+  const allIncs = [...condominiosIndividuais, ...condominiosAgrupados].flatMap((c) => c.incs);
   const urls = allIncs.map((key) => ({
     key,
     url: `https://api.incharge.app/api/v2/now/${key}`
@@ -175,13 +242,12 @@ async function getAllData() {
     data[r.key] = r.data;
   });
 
-  condominiosIndividuais.forEach((c) => {
-    createLocationColumn(c.nome, c.incs, data);
-  });
-
-  createGroupedColumn(condominiosAgrupados, data);
+  ultimoData = data;
+  renderCondominios();
   atualizarHorario();
 }
 
+// inicialização
+popularFiltro();
 getAllData();
 setInterval(getAllData, 60000);

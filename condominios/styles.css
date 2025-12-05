@@ -1,0 +1,46 @@
+/* =========================
+   Barra de filtro de condomínio
+   ========================= */
+.filter-bar {
+  max-width: 1600px;
+  margin: 8px auto 12px auto;
+  padding: 0 6px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.filter-bar label {
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.filter-bar select {
+  min-width: 260px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, .35);
+  color: var(--text);
+  font-size: .9rem;
+  outline: none;
+  appearance: none;
+}
+
+/* dá um pouco de feedback no foco */
+.filter-bar select:focus-visible {
+  outline: 2px solid var(--primary-weak);
+  outline-offset: 2px;
+}
+
+/* responsivo: empilha label e select em telas pequenas */
+@media (max-width: 600px) {
+  .filter-bar {
+    justify-content: center;
+    text-align: center;
+  }
+}
