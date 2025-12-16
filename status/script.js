@@ -15,26 +15,24 @@
   const tresCoracoes = ["inc234","inc235","inc236"];
   const carmopolis = ["inc237","inc238","inc239"];
   const aparecida = ["inc247","inc248","inc249"];
-  const paraDeMinas = ["pc111"]; // NOVO
+
+  // Solos / unidades individuais
   const santaRita = ["inc241"];
   const itajuba = ["pc106"];
-  // AGL removido
+  const paraDeMinas = ["pc111"]; // NOVO (vai no grupo)
 
   const locations = [
     { name:"São José dos Campos - SP", keys:saoJose, link:"https://www.google.com.br/maps/place/PIT+-+Parque+de+Inovação+Tecnológica+São+José+dos+Campos" },
     { name:"Três Corações - MG", keys:tresCoracoes, link:"https://www.google.com.br/maps/place/Venda+do+Chico+-+Três+Corações" },
     { name:"Carmópolis de Minas - MG", keys:carmopolis, link:"https://www.google.com.br/maps/place/Eletroposto+Carmópolis+de+Minas" },
     { name:"Aparecida - SP", keys:aparecida, link:"https://www.google.com.br/maps/place/Posto+Arco+Íris+Aparecida" },
-
-    // NOVO LOCAL
-    { name:"Pará de Minas - MG", keys:paraDeMinas, link:"https://www.google.com.br/maps/place/Pará+de+Minas+MG" },
-
     {
       group:true,
       name:"Unidades Individuais",
       children:[
         { name:"Santa Rita do Sapucaí - MG", keys:santaRita, link:"https://www.google.com.br/maps/place/INCHARGE+Santa+Rita" },
-        { name:"Itajubá - ITACAR", keys:itajuba, link:"https://www.google.com.br/maps/place/Itajubá+ITACAR" }
+        { name:"Itajubá - ITACAR", keys:itajuba, link:"https://www.google.com.br/maps/place/Itajubá+ITACAR" },
+        { name:"Pará de Minas - MG", keys:paraDeMinas, link:"https://www.google.com.br/maps/place/Pará+de+Minas+MG" } // NOVO
       ]
     }
   ];
@@ -142,7 +140,8 @@
         }
 
         if(chargers.length === 0){
-          const p=document.createElement("p"); p.className="loading"; p.textContent="Carregando dados...";
+          const p=document.createElement("p");
+          p.className="loading"; p.textContent="Carregando dados...";
           container.appendChild(p);
         }else{
           chargers.forEach(ch=>{
@@ -202,9 +201,9 @@
         ...tresCoracoes,
         ...carmopolis,
         ...aparecida,
-        ...paraDeMinas, // NOVO
         ...santaRita,
-        ...itajuba
+        ...itajuba,
+        ...paraDeMinas // NOVO
       ];
 
       const urls = allKeys.map(key => ({key, url:`https://api.incharge.app/api/v2/now/${key}`}));
