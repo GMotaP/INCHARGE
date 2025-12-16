@@ -15,6 +15,7 @@
   const tresCoracoes = ["inc234","inc235","inc236"];
   const carmopolis = ["inc237","inc238","inc239"];
   const aparecida = ["inc247","inc248","inc249"];
+  const paraDeMinas = ["pc111"]; // NOVO
   const santaRita = ["inc241"];
   const itajuba = ["pc106"];
   // AGL removido
@@ -24,6 +25,10 @@
     { name:"Três Corações - MG", keys:tresCoracoes, link:"https://www.google.com.br/maps/place/Venda+do+Chico+-+Três+Corações" },
     { name:"Carmópolis de Minas - MG", keys:carmopolis, link:"https://www.google.com.br/maps/place/Eletroposto+Carmópolis+de+Minas" },
     { name:"Aparecida - SP", keys:aparecida, link:"https://www.google.com.br/maps/place/Posto+Arco+Íris+Aparecida" },
+
+    // NOVO LOCAL
+    { name:"Pará de Minas - MG", keys:paraDeMinas, link:"https://www.google.com.br/maps/place/Pará+de+Minas+MG" },
+
     {
       group:true,
       name:"Unidades Individuais",
@@ -197,6 +202,7 @@
         ...tresCoracoes,
         ...carmopolis,
         ...aparecida,
+        ...paraDeMinas, // NOVO
         ...santaRita,
         ...itajuba
       ];
@@ -239,4 +245,4 @@
   getAllData();
   setInterval(getAllData, 30000);
   window.addEventListener('resize', fitToViewport);
-})();
+})(); 
