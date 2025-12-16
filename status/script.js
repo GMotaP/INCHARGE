@@ -19,7 +19,8 @@
   // Solos / unidades individuais
   const santaRita = ["inc241"];
   const itajuba = ["pc106"];
-  const paraDeMinas = ["pc111"]; // NOVO (vai no grupo)
+  const paraDeMinas = ["pc111"];
+  const campoBelo = ["pc112"]; // NOVO (Campo Belo - MG)
 
   const locations = [
     { name:"São José dos Campos - SP", keys:saoJose, link:"https://www.google.com.br/maps/place/PIT+-+Parque+de+Inovação+Tecnológica+São+José+dos+Campos" },
@@ -32,7 +33,8 @@
       children:[
         { name:"Santa Rita do Sapucaí - MG", keys:santaRita, link:"https://www.google.com.br/maps/place/INCHARGE+Santa+Rita" },
         { name:"Itajubá - ITACAR", keys:itajuba, link:"https://www.google.com.br/maps/place/Itajubá+ITACAR" },
-        { name:"Pará de Minas - MG", keys:paraDeMinas, link:"https://www.google.com.br/maps/place/Pará+de+Minas+MG" } // NOVO
+        { name:"Pará de Minas - MG", keys:paraDeMinas, link:"https://www.google.com.br/maps/place/Pará+de+Minas+MG" },
+        { name:"Campo Belo - MG (Impacto Energia Solar)", keys:campoBelo, link:"https://www.google.com.br/maps/place/Campo+Belo+MG" } // NOVO
       ]
     }
   ];
@@ -203,7 +205,8 @@
         ...aparecida,
         ...santaRita,
         ...itajuba,
-        ...paraDeMinas // NOVO
+        ...paraDeMinas,
+        ...campoBelo // NOVO
       ];
 
       const urls = allKeys.map(key => ({key, url:`https://api.incharge.app/api/v2/now/${key}`}));
