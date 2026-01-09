@@ -40,7 +40,7 @@ body {
     radial-gradient(1000px 520px at 12% 0%, rgba(255, 138, 140, 0.28), transparent 60%),
     radial-gradient(820px 480px at 92% 4%, rgba(255, 138, 140, 0.20), transparent 65%),
     linear-gradient(135deg, #ff8a8c 0%, #c16a6d 38%, #4a4f58 100%);
-  /* Corrigido: permitir rolagem vertical, bloqueando só horizontal */
+  /* Mantém o body sem rolagem horizontal; a rolagem ficará no container de locais */
   overflow-x: hidden;
   padding: 16px;
 }
@@ -185,11 +185,27 @@ h1 {
   width: 100%;
 }
 
+/* =========================
+   LOCAIS EM UMA ÚNICA LINHA (ALTERAÇÃO PRINCIPAL)
+   ========================= */
+/* Se o seu container for o #locations, este seletor cobre.
+   Caso seja uma DIV com class .locations-container, o seletor abaixo também cobre. */
+#locations,
 .locations-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  display: flex;
+  flex-wrap: nowrap;          /* NÃO quebra linha */
   gap: 14px;
-  align-content: start;
+  align-items: flex-start;
+
+  overflow-x: auto;           /* rolagem horizontal para ver todos */
+  overflow-y: hidden;
+  padding-bottom: 10px;
+
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+
+  /* opcional: "snap" para parar card a card */
+  scroll-snap-type: x mandatory;
 }
 
 /* =========================
@@ -202,8 +218,11 @@ h1 {
   padding: 14px;
   box-shadow: 0 10px 32px rgba(0, 0, 0, .24);
   transition: transform .2s ease, box-shadow .2s ease;
-  /* Container Query opcional para layouts estreitos */
   container-type: inline-size;
+
+  /* PARA UMA LINHA: impede encolher e define largura do card */
+  flex: 0 0 clamp(240px, 22vw, 320px);
+  scroll-snap-align: start;
 }
 
 @media (hover: hover) {
@@ -263,7 +282,6 @@ h1 {
    ========================= */
 .containerInfo {
   display: grid;
-  /* Mais fluido por padrão */
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 8px;
   margin-bottom: 8px;
@@ -274,8 +292,7 @@ h1 {
   grid-template-columns: repeat(3, minmax(140px, 1fr));
 }
 
-/* Correção crítica:
-   Link herda a cor do cartão para manter contraste correto (ex.: .is-finishing) */
+/* Correção crítica: Link herda a cor do cartão */
 .containerInfo a {
   text-decoration: none;
   color: inherit;
@@ -294,7 +311,7 @@ h1 {
   overflow: hidden;
   box-shadow: 0 4px 14px rgba(0, 0, 0, .25);
   transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
-  color: #ffffff; /* cor padrão */
+  color: #ffffff;
 }
 
 @media (hover: hover) {
@@ -316,7 +333,7 @@ h1 {
 
 .chargerInfo.is-finishing {
   background: linear-gradient(135deg, var(--fin-1), var(--fin-2));
-  color: var(--fin-text); /* mantém contraste correto */
+  color: var(--fin-text);
 }
 
 .chargerInfo.is-charging {
@@ -348,6 +365,24 @@ h1 {
 @keyframes shimmer {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
+}
+
+/* =========================
+   Scrollbar estética (opcional)
+   ========================= */
+#locations::-webkit-scrollbar,
+.locations-container::-webkit-scrollbar {
+  height: 10px;
+}
+#locations::-webkit-scrollbar-thumb,
+.locations-container::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.25);
+  border-radius: 999px;
+}
+#locations::-webkit-scrollbar-track,
+.locations-container::-webkit-scrollbar-track {
+  background: rgba(255,255,255,.08);
+  border-radius: 999px;
 }
 
 /* =========================
