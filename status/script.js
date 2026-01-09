@@ -16,6 +16,9 @@
   const carmopolis = ["inc237","inc238","inc239"];
   const aparecida = ["inc247","inc248","inc249"];
 
+  // NOVO LOCAL (4 carregadores)
+  const scherer = ["pc129","pc130","pc131","pc132"];
+
   // Solos / unidades individuais
   const santaRita = ["inc241"];
   const itajuba = ["pc106"];
@@ -27,6 +30,10 @@
     { name:"Três Corações - MG", keys:tresCoracoes, link:"https://www.google.com.br/maps/place/Venda+do+Chico+-+Três+Corações" },
     { name:"Carmópolis de Minas - MG", keys:carmopolis, link:"https://www.google.com.br/maps/place/Eletroposto+Carmópolis+de+Minas" },
     { name:"Aparecida - SP", keys:aparecida, link:"https://www.google.com.br/maps/place/Posto+Arco+Íris+Aparecida" },
+
+    // NOVO: Scherer carregadores
+    { name:"Scherer carregadores", keys:scherer, link:"#" },
+
     {
       group:true,
       name:"Unidades Individuais",
@@ -203,6 +210,10 @@
         ...tresCoracoes,
         ...carmopolis,
         ...aparecida,
+
+        // NOVO: Scherer carregadores
+        ...scherer,
+
         ...santaRita,
         ...itajuba,
         ...paraDeMinas,
@@ -247,4 +258,4 @@
   getAllData();
   setInterval(getAllData, 30000);
   window.addEventListener('resize', fitToViewport);
-})(); 
+})();
