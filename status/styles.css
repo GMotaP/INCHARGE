@@ -400,3 +400,23 @@ h1 {
 @container (max-width: 360px) {
   .containerInfo { grid-template-columns: 1fr; }
 }
+/* ===== FIX DEFINITIVO: cards (locais) em UMA ÚNICA LINHA ===== */
+#locations {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 14px;
+  align-items: flex-start;
+
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+
+  padding-bottom: 10px;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* garante que cada card não “estique” para 100% e nem force quebra */
+#locations > .city-column {
+  flex: 0 0 280px;        /* largura do card */
+  min-width: 280px;       /* impede encolher demais */
+}
