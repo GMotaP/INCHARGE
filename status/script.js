@@ -12,7 +12,7 @@
 
   /* Locais */
   const saoJose = ["inc250","inc251","inc252"];
-  const tresCoracoes = ["inc234","inc235","inc236"];
+  const tresCoracoes = ["inc234","inc235","inc241"];
   const carmopolis = ["inc237","inc238","inc239"];
   const aparecida = ["inc247","inc248","inc249"];
 
@@ -20,7 +20,7 @@
   const scherer = ["pc129","pc130","pc131","pc132"];
 
   // Solos / unidades individuais
-  const santaRita = ["inc241"];
+  const santaRita = ["pc011"];
   const itajuba = ["pc106"];
   const paraDeMinas = ["pc111"];
   const campoBelo = ["pc112"]; // NOVO (Campo Belo - MG)
