@@ -20,7 +20,7 @@
   const scherer = ["pc129","pc130","pc131","pc132"];
 
   // Solos / unidades individuais
-  const santaRita = ["pc011"];
+  const santaRita = ["pc025"];
   const itajuba = ["pc106"];
   const paraDeMinas = ["pc111"];
   const campoBelo = ["pc112"]; // NOVO (Campo Belo - MG)
