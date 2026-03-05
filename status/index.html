@@ -4,8 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Status dos Carregadores</title>
-  <!-- AJUSTE: nome do arquivo exatamente igual ao que está no repositório -->
-  <!-- Se o arquivo chama "Style.css", use "Style.css". Se for "styles.css", troque abaixo. -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -43,14 +41,15 @@
       </div>
     </div>
 
-    <div class="main-container">
-      <div class="locations-container" id="locations">
+    <main class="main-container">
+      <section class="locations-container" id="locations" aria-label="Locais principais">
         <div class="loading">Carregando informações dos carregadores...</div>
-      </div>
-    </div>
+      </section>
+
+      <section id="locations-secondary" class="locations-secondary" aria-label="Unidades individuais"></section>
+    </main>
   </div>
 
-  <!-- AJUSTE: "defer" garante que o DOM exista quando o script executar -->
   <script src="script.js" defer></script>
 </body>
 </html>
