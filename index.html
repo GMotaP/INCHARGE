@@ -1,160 +1,178 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>INCHARGE - Home</title>
-    <meta name="description" content="Monitore desempenho e disponibilidade dos carregadores INCHARGE em tempo real.">
-    <meta name="theme-color" content="#ff585b">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0b0d" />
+  <meta name="description" content="Central de monitoramento INCHARGE — status em tempo real dos carregadores elétricos." />
+  <title>INCHARGE · Central de Monitoramento</title>
 
-    <!-- Fonte Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
 
-    <link rel="stylesheet" href="index.css" />
-  </head>
-  <body>
-    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="page">
 
-    <div class="page">
-      <header class="topbar">
-        <a class="brand" href="index.html" aria-label="InCharge">
-          <span class="brand__mark" aria-hidden="true">IC</span>
-          <span class="brand__text">INCHARGE</span>
-        </a>
+    <!-- ── TOPBAR ─────────────────────────────────────────── -->
+    <header class="topbar" role="banner">
+      <a href="index.html" aria-label="INCHARGE — ir para a página inicial">
+        <img class="topbar__logo" src="status/incharge.png" alt="INCHARGE" />
+      </a>
+      <nav class="topbar__nav" aria-label="Portais">
+        <a class="topbar__link" href="status/">Eletropostos</a>
+        <a class="topbar__link" href="condominios/">Condomínios</a>
+        <a class="topbar__link" href="p4c/p4c.html">P4C</a>
+      </nav>
+    </header>
 
-        <nav class="topbar__nav" aria-label="Principais páginas">
-          <a class="topbar__link" href="status/">Status</a>
-          <a class="topbar__link" href="condominios/">Condomínios</a>
-          <a class="topbar__link" href="p4c.html">P4C</a>
-        </nav>
+    <!-- ── HERO ───────────────────────────────────────────── -->
+    <section class="hero" aria-label="Boas-vindas">
+      <img class="hero__logo" src="status/incharge.png" alt="INCHARGE" />
 
-        <a class="button button--ghost" href="status.html">Entrar no painel</a>
-      </header>
+      <span class="hero__eyebrow">
+        <span class="hero__eyebrow-dot" aria-hidden="true"></span>
+        Monitoramento ao vivo
+      </span>
 
-      <main id="conteudo" class="content">
-        <section class="hero">
-          <div class="hero__content">
-            <span class="hero__pill">Monitoramento inteligente</span>
-            <h1>Controle total da rede de carregadores INCHARGE</h1>
-            <p>
-              Acompanhe desempenho, disponibilidade e alertas em tempo real para
-              cada ponto de carregamento distribuído no país.
-            </p>
+      <h1 class="hero__title">
+        Central de status<br><em>INCHARGE</em>
+      </h1>
 
-            <div class="hero__actions">
-              <a class="button button--primary" href="status.html">
-                Ver status em tempo real
-              </a>
-              <a class="button button--outline" href="#painel">
-                Explorar soluções
-              </a>
-            </div>
+      <p class="hero__sub">
+        Acesse o painel do seu segmento e acompanhe
+        disponibilidade, cargas ativas e alertas em tempo real.
+      </p>
+    </section>
 
-            <!-- Métricas podem continuar estáticas ou serem dinamizadas depois -->
-            <ul class="hero__metrics" role="list">
-              <li class="hero__metric">
-                <span class="metric__label">Carregadores ativos</span>
-                <strong class="metric__value">+10</strong>
-              </li>
-              <li class="hero__metric">
-                <span class="metric__label">Cidades atendidas</span>
-                <strong class="metric__value">18</strong>
-              </li>
-              <li class="hero__metric">
-                <span class="metric__label">Disponibilidade média</span>
-                <strong class="metric__value">97%</strong>
-              </li>
-            </ul>
+    <!-- ── PORTAIS ────────────────────────────────────────── -->
+    <main class="portals" id="portais" aria-label="Portais de monitoramento">
+
+      <!-- ── ELETROPOSTOS ──────────────────────────────────── -->
+      <a class="portal portal--elet" href="status/" aria-label="Acessar painel de Eletropostos">
+        <div class="portal__stripe" aria-hidden="true"></div>
+
+        <div class="portal__body">
+          <div class="portal__icon" aria-hidden="true">⚡</div>
+
+          <div>
+            <div class="portal__name">Eletropostos</div>
           </div>
 
-          <div class="hero__preview" aria-hidden="false">
-            <article class="preview-card" aria-labelledby="titulo-status">
-              <header class="preview-card__header">
-                <span class="preview-card__badge">Resumo em tempo real</span>
-                <h2 id="titulo-status">Status dos Carregadores</h2>
-              </header>
+          <p class="portal__desc">
+            Status em tempo real dos carregadores públicos distribuídos pelo país.
+            Veja disponibilidade, sessões ativas e locais no mapa.
+          </p>
 
-              <ul class="preview-card__list">
-                <li>
-                  <span class="dot dot--online" aria-hidden="true"></span>
-                  <span>Disponíveis</span>
-                  <strong class="js-count-available">0</strong>
-                </li>
-                <li>
-                  <span class="dot dot--charging" aria-hidden="true"></span>
-                  <span>Em carga</span>
-                  <strong class="js-count-charging">0</strong>
-                </li>
-                <li>
-                  <span class="dot dot--offline" aria-hidden="true"></span>
-                  <span>Offline</span>
-                  <strong class="js-count-offline">0</strong>
-                </li>
-              </ul>
-
-              <footer class="preview-card__footer" aria-live="polite" aria-atomic="true">
-                Atualizado agora
-              </footer>
-            </article>
+          <div class="portal__stats" aria-label="Status ao vivo">
+            <span class="pstat pstat--available is-loading" title="Disponíveis">
+              <span class="pstat__dot" aria-hidden="true"></span>
+              <span id="elet-available">—</span>&nbsp;disp.
+            </span>
+            <span class="pstat pstat--charging is-loading" title="Carregando">
+              <span class="pstat__dot" aria-hidden="true"></span>
+              <span id="elet-charging">—</span>&nbsp;carga
+            </span>
+            <span class="pstat pstat--offline is-loading" title="Offline">
+              <span class="pstat__dot" aria-hidden="true"></span>
+              <span id="elet-offline">—</span>&nbsp;offline
+            </span>
           </div>
-        </section>
+        </div>
 
-        <section class="solutions" id="painel" aria-label="Painéis disponíveis">
-          <header class="solutions__header">
-            <h2>Escolha o painel ideal para o seu contexto</h2>
-            <p>
-              Acesse dashboards feitos sob medida para acompanhar indicadores de
-              operação, contratos e performance.
-            </p>
-          </header>
+        <div class="portal__cta" aria-hidden="true">
+          <span class="portal__cta-label">Acessar painel</span>
+          <span class="portal__cta-arrow">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </div>
+      </a>
 
-          <div class="solutions__grid">
-            <a class="card card--status" href="status.html">
-              <div class="card__icon" aria-hidden="true">⚡</div>
-              <div class="card__body">
-                <h3>Status em tempo real</h3>
-                <p>
-                  Veja rapidamente a disponibilidade de toda a rede com
-                  indicadores de alerta inteligentes.
-                </p>
-              </div>
-              <span class="card__tag">Tempo real</span>
-            </a>
+      <!-- ── CONDOMÍNIOS ────────────────────────────────────── -->
+      <a class="portal portal--condo" href="condominios/" aria-label="Acessar painel de Condomínios">
+        <div class="portal__stripe" aria-hidden="true"></div>
 
-            <a class="card card--condo" href="condominio.html">
-              <div class="card__icon" aria-hidden="true">🏙️</div>
-              <div class="card__body">
-                <h3>Painel para Condomínios</h3>
-                <p>
-                  Controle uso e manutenção dos carregadores instalados em
-                  condomínios parceiros.
-                </p>
-              </div>
-              <span class="card__tag">Gestão dedicada</span>
-            </a>
+        <div class="portal__body">
+          <div class="portal__icon" aria-hidden="true">🏢</div>
 
-            <a class="card card--p4c" href="p4c.html">
-              <div class="card__icon" aria-hidden="true">🏢</div>
-              <div class="card__body">
-                <h3>Programa Plug for Charge</h3>
-                <p>
-                  Monitore os pontos corporativos com métricas de energia e
-                  alertas operacionais.
-                </p>
-              </div>
-              <span class="card__tag">Operação</span>
-            </a>
+          <div>
+            <div class="portal__name">Condomínios</div>
           </div>
-        </section>
-      </main>
 
-      <footer class="footer">
-        <small>© 2018 InCharge. Todos os direitos reservados.</small>
-      </footer>
-    </div>
+          <p class="portal__desc">
+            Painel dedicado aos carregadores instalados em condomínios residenciais
+            e comerciais. Visualização compacta por unidade.
+          </p>
 
-    <script defer src="index.js"></script>
-  </body>
+          <div class="portal__stats" aria-label="Resumo">
+            <span class="pstat pstat--total" title="Total de condomínios monitorados">
+              <span class="pstat__dot" aria-hidden="true"></span>
+              <span id="condo-total">43</span>&nbsp;condomínios
+            </span>
+          </div>
+        </div>
+
+        <div class="portal__cta" aria-hidden="true">
+          <span class="portal__cta-label">Acessar painel</span>
+          <span class="portal__cta-arrow">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- ── P4C ────────────────────────────────────────────── -->
+      <a class="portal portal--p4c" href="p4c/p4c.html" aria-label="Acessar painel P4C">
+        <div class="portal__stripe" aria-hidden="true"></div>
+
+        <div class="portal__body">
+          <div class="portal__icon" aria-hidden="true">🔌</div>
+
+          <div>
+            <div class="portal__name">P4C</div>
+          </div>
+
+          <p class="portal__desc">
+            Programa Plug 4 Charge — monitoramento de pontos corporativos
+            com métricas de energia e alertas operacionais.
+          </p>
+
+          <div class="portal__stats" aria-label="Resumo">
+            <span class="pstat pstat--total" title="Pay4Charge">
+              <span class="pstat__dot" aria-hidden="true"></span>
+              Pay4Charge
+            </span>
+          </div>
+        </div>
+
+        <div class="portal__cta" aria-hidden="true">
+          <span class="portal__cta-label">Acessar painel</span>
+          <span class="portal__cta-arrow">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </div>
+      </a>
+
+    </main>
+
+    <!-- ── FOOTER ─────────────────────────────────────────── -->
+    <footer class="footer" role="contentinfo">
+      <img class="footer__logo" src="status/incharge.png" alt="" aria-hidden="true" />
+      <span class="footer__text">© 2018 INCHARGE · Todos os direitos reservados</span>
+    </footer>
+
+  </div>
+
+  <script src="home.js" defer></script>
+</body>
 </html>
