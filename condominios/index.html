@@ -1,68 +1,93 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Status dos Carregadores - Condomínios</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body class="pagina-condominios">
-    <!-- Botão Voltar (usa .btn-back do CSS) -->
-    <a href="https://gmotap.github.io/INCHARGE/" class="btn-back">← Voltar</a>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0b0d" />
+  <title>INCHARGE · Condomínios</title>
 
-    <div class="scale-root">
-      <!-- Cabeçalho com logo + título + última atualização -->
-      <header>
-        <div class="brand" aria-label="INCHARGE"></div>
-        <h1>Status dos Carregadores - Condomínios</h1>
-        <p id="last-update"></p>
-      </header>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
 
-      <main class="main-container">
-        <!-- Barra de filtro de condomínio -->
-        <section class="controls">
-          <div class="filter-bar">
-            <label for="condo-filter">Filtrar condomínio:</label>
-            <select id="condo-filter"></select>
-          </div>
-        </section>
+  <header class="topbar" role="banner">
+    <a class="topbar__back" href="https://gmotap.github.io/INCHARGE/" aria-label="Voltar para o site">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 18l-6-6 6-6" />
+      </svg>
+    </a>
 
-        <!-- Legenda de status -->
-        <section class="legend-section">
-          <div class="legend" aria-label="Legenda de status dos carregadores">
-            <h2>Legenda</h2>
-            <div class="legend-container">
-              <div class="legend-item">
-                <div class="legend-color" style="background-color: #4caf50;"></div>
-                <span>Disponível</span>
-              </div>
-              <div class="legend-item">
-                <div class="legend-color" style="background-color: #006400;"></div>
-                <span>Preparando</span>
-              </div>
-              <div class="legend-item">
-                <div class="legend-color" style="background-color: #ffff00;"></div>
-                <span>Finalizando</span>
-              </div>
-              <div class="legend-item">
-                <div class="legend-color" style="background-color: #ff585b;"></div>
-                <span>Carregando</span>
-              </div>
-              <div class="legend-item">
-                <div class="legend-color" style="background-color: black; opacity: 0.5;"></div>
-                <span>Offline</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Onde o JS vai injetar os cartões de condomínio/carregadores -->
-        <section class="locations-section">
-          <div class="locations-container" id="locations"></div>
-        </section>
-      </main>
+    <div class="topbar__brand">
+      <img class="topbar__logo" src="../status/incharge.png" alt="INCHARGE" />
+      <span class="topbar__divider" aria-hidden="true"></span>
+      <span class="topbar__title">Condomínios</span>
     </div>
 
-    <script src="script-condominio.js"></script>
-  </body>
+    <div class="topbar__live" id="live-pill" title="Atualiza a cada 60 segundos">
+      <span class="live-dot" aria-hidden="true"></span>
+      <span class="live-text">AO VIVO</span>
+    </div>
+
+    <div class="topbar__meta">
+      <span class="topbar__updated" id="last-update">carregando…</span>
+      <button class="topbar__btn" id="theme-toggle" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="shell">
+    <div id="banner" class="banner" style="display:none;" role="status"></div>
+
+    <!-- KPIs -->
+    <section class="kpis" id="kpis" aria-label="Indicadores gerais"></section>
+
+    <!-- Controles: busca + filtro -->
+    <div class="controls">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
+        </svg>
+        <input
+          class="search-input"
+          id="search-input"
+          type="search"
+          placeholder="Buscar condomínio…"
+          autocomplete="off"
+          spellcheck="false"
+        />
+      </div>
+      <div class="filter-tabs" role="group" aria-label="Filtrar por tipo">
+        <button class="ftab is-on" data-filter="all">Todos <span class="ftab__count" id="count-all"></span></button>
+        <button class="ftab" data-filter="individual">Individuais <span class="ftab__count" id="count-individual"></span></button>
+        <button class="ftab" data-filter="agrupado">Agrupados <span class="ftab__count" id="count-agrupado"></span></button>
+      </div>
+    </div>
+
+    <!-- Grade de condomínios -->
+    <section class="condos" id="condos" aria-label="Condomínios"></section>
+
+    <!-- Empty state -->
+    <div class="empty-state" id="empty-state" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/><path d="M8 11h6M11 8v6"/>
+      </svg>
+      <span>Nenhum condomínio encontrado</span>
+    </div>
+  </main>
+
+  <script src="app.js" defer></script>
+</body>
 </html>
