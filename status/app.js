@@ -18,7 +18,7 @@
   const singles = [
     { name: "Santa Rita do Sapucaí - MG",         keys: ["pc025"], link: "https://www.google.com.br/maps/place/INCHARGE+Santa+Rita" },
     { name: "Itajubá · ITACAR",                    keys: ["pc106"], link: "https://www.google.com.br/maps/place/Itajubá+ITACAR" },
-    { name: "Pará de Minas - MG",                  keys: ["pc111"], link: "https://www.google.com.br/maps/place/Pará+de+Minas+MG" },
+    { name: "Lumus",                               keys: ["pc111", "pc134"], link: "#" },
     { name: "Campo Belo - MG (Impacto Solar)",     keys: ["pc112"], link: "https://www.google.com.br/maps/place/Campo+Belo+MG" },
   ];
 
@@ -208,19 +208,21 @@
   function renderSingles() {
     const frag = document.createDocumentFragment();
     singles.forEach(s => {
-      const key = s.keys[0];
-      const list = data[key] || [];
-      const ok = list.filter(c => getStatus(c) !== "Offline").length;
+      const isMulti = s.keys.length > 1;
+      const allList = s.keys.flatMap(k => data[k] || []);
+      const ok = allList.filter(c => getStatus(c) !== "Offline").length;
 
       const card = el("article", { class: "single" });
       card.append(
         el("div", { class: "single__head" },
           el("div", { class: "single__name" },
             el("span", { class: "single__name-text" }, s.name),
-            el("span", { class: "single__id" }, key.toUpperCase()),
+            el("span", { class: "single__id" }, s.keys.map(k => k.toUpperCase()).join(" · ")),
           ),
           el("div", { class: "city__summary" },
-            list.length ? el("span", { class: "city__stat", "data-st": "available" }, `${ok}/${list.length}`) : null,
+            allList.length
+              ? el("span", { class: "city__stat", "data-st": "available" }, `${ok}/${allList.length}`)
+              : null,
             s.link && s.link !== "#"
               ? el("a", { class: "city__map", href: s.link, target: "_blank", rel: "noopener noreferrer", html: SVG_MAP, "aria-label": "Abrir no mapa" })
               : null,
@@ -228,13 +230,21 @@
         ),
       );
 
-      const plugs = el("div", { class: "plugs", "data-count": String(Math.max(list.length, 1)) });
-      if (list.length === 0) {
-        plugs.append(renderLoadingPlug(), renderLoadingPlug());
+      if (isMulti) {
+        // Render each charger unit separately (like a city body)
+        s.keys.forEach(k => card.append(renderUnit(k)));
       } else {
-        list.forEach(ch => plugs.append(renderPlug(key, ch)));
+        const key = s.keys[0];
+        const list = data[key] || [];
+        const plugs = el("div", { class: "plugs", "data-count": String(Math.max(list.length, 1)) });
+        if (list.length === 0) {
+          plugs.append(renderLoadingPlug(), renderLoadingPlug());
+        } else {
+          list.forEach(ch => plugs.append(renderPlug(key, ch)));
+        }
+        card.append(plugs);
       }
-      card.append(plugs);
+
       frag.append(card);
     });
     elSingles.replaceChildren(frag);
@@ -250,11 +260,27 @@
     return `há ${Math.floor(s / 3600)}h`;
   }
 
+  // ── Render: Brasília clock ─────────────────────────────
+  function updateClock() {
+    const elClock = document.getElementById("clock-time");
+    if (!elClock) return;
+    const now = new Date();
+    const timeStr = now.toLocaleString("pt-BR", {
+      timeZone: "America/Sao_Paulo",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    });
+    elClock.textContent = timeStr;
+  }
+
   function renderUpdated() {
     elUpdated.textContent = fmtSince();
     const stale = lastFetchTs && (Date.now() - lastFetchTs > REFRESH_MS * 2);
     elLive.classList.toggle("is-stale", !!stale);
     elLive.querySelector(".live-text").textContent = stale ? "PAUSADO" : "AO VIVO";
+    updateClock();
   }
 
   // ── Fetch ───────────────────────────────────────────────
@@ -311,7 +337,7 @@
     const next = {};
     allKeys.forEach((key, idx) => {
       const isPC = key.startsWith("pc");
-      const isSingleton = singles.some(s => s.keys[0] === key);
+      const isSingleton = singles.some(s => s.keys.includes(key) && s.keys.length === 1);
       const n = isSingleton ? (key === "pc106" ? 2 : 1) : (isPC ? 2 : 3);
       const offlineLuck = idx % 11 === 0; // ~9% offline
       next[key] = Array.from({ length: n }, (_, i) => ({
@@ -354,6 +380,9 @@
   // ── Boot ────────────────────────────────────────────────
   function boot() {
     initTheme();
+
+    // Start clock immediately
+    updateClock();
 
     // initial paint with placeholders
     renderAll();

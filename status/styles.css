@@ -220,6 +220,34 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
+
+/* ── CLOCK ───────────────────────────────────────────────── */
+.topbar__clock {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: var(--r-pill);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+}
+.clock-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+  text-transform: uppercase;
+}
+.clock-time {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-2);
+  letter-spacing: 0.04em;
+}
+
 .topbar__btn {
   display: inline-grid;
   place-items: center;
@@ -555,19 +583,21 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 /* ── SINGLES (single-unit cities) ───────────────────────── */
 .singles {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
 }
 .single {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   padding: var(--pad-card);
   background: var(--surface-1);
   border: 1px solid var(--border);
   border-radius: var(--r-3);
   box-shadow: var(--shadow-1);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
 }
+.single:hover { border-color: var(--border-2); box-shadow: var(--shadow-2); }
 .single__head {
   display: flex;
   align-items: center;
@@ -580,7 +610,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   min-width: 0;
 }
 .single__name-text {
-  font-size: 0.86rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--text);
@@ -590,11 +620,12 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 }
 .single__id {
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   color: var(--text-3);
   text-transform: uppercase;
+  margin-top: 2px;
 }
 
 /* ── LIST LAYOUT VARIATION ──────────────────────────────── */
@@ -802,6 +833,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   .topbar__updated { font-size: 0.66rem; }
   .topbar__live { padding: 4px 8px 4px 6px; font-size: 0.62rem; }
   .topbar__logo { height: 24px; }
+  .topbar__clock { display: none; }
   .shell { padding: 10px 10px 80px; gap: 10px; }
   .locations { gap: 8px; }
   [data-layout="list"] .city { flex-direction: column; }
