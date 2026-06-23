@@ -10,14 +10,15 @@
   const cities = [
     { name: "São José dos Campos - SP",       keys: ["inc250", "inc251", "inc252"], link: "https://www.google.com.br/maps/place/PIT+-+Parque+de+Inovação+Tecnológica+São+José+dos+Campos" },
     { name: "Três Corações - MG",              keys: ["inc234", "inc235", "inc241"], link: "https://www.google.com.br/maps/place/Venda+do+Chico+-+Três+Corações" },
-    { name: "Carmópolis de Minas - MG",        keys: ["inc237", "inc238", "inc239"], link: "https://www.google.com.br/maps/place/Eletroposto+Carmópolis+de+Minas" },
+    { name: "Carmópolis de Minas - MG",        keys: ["inc238", "inc239"], link: "https://www.google.com.br/maps/place/Eletroposto+Carmópolis+de+Minas" },
+    { name: "Posto Beija Flor - MG",           keys: ["inc237", "inc236"], link: "#" },
     { name: "Aparecida - SP",                  keys: ["inc247", "inc248", "inc249"], link: "https://www.google.com.br/maps/place/Posto+Arco+Íris+Aparecida" },
     { name: "Scherer Carregadores",            keys: ["pc129", "pc130", "pc131", "pc132"], link: "#" },
   ];
 
   const singles = [
     { name: "Santa Rita do Sapucaí - MG",         keys: ["pc025"], link: "https://www.google.com.br/maps/place/INCHARGE+Santa+Rita" },
-    { name: "Itajubá · ITACAR",                    keys: ["pc106"], link: "https://www.google.com.br/maps/place/Itajubá+ITACAR" },
+    { name: "Itajubá · ITACAR",                    keys: ["pc106", "pc128"], link: "https://www.google.com.br/maps/place/Itajubá+ITACAR" },
     { name: "Lumus",                               keys: ["pc111", "pc134"], link: "#" },
     { name: "Campo Belo - MG (Impacto Solar)",     keys: ["pc112"], link: "https://www.google.com.br/maps/place/Campo+Belo+MG" },
   ];
