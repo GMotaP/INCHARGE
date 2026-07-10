@@ -21,6 +21,7 @@
     { name: "Itajubá · ITACAR",                    keys: ["pc106", "pc128"], link: "https://www.google.com.br/maps/place/Itajubá+ITACAR" },
     { name: "Lumus",                               keys: ["pc111", "pc134"], link: "#" },
     { name: "Campo Belo - MG (Impacto Solar)",     keys: ["pc112"], link: "https://www.google.com.br/maps/place/Campo+Belo+MG" },
+    { name: "ServSul (Pouso Alegre - MG)",         keys: ["pc139", "pc141"], link: "#" },
   ];
 
   const STATUS_LABEL = {
