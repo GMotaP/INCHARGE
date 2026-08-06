@@ -9,19 +9,19 @@
 
   const cities = [
     { name: "São José dos Campos - SP",       keys: ["inc250", "inc251", "inc252"], link: "https://www.google.com.br/maps/place/PIT+-+Parque+de+Inovação+Tecnológica+São+José+dos+Campos" },
+    { name: "Aparecida - SP",                  keys: ["inc247", "inc248", "inc249"], link: "https://www.google.com.br/maps/place/Posto+Arco+Íris+Aparecida" },
     { name: "Três Corações - MG",              keys: ["inc234", "inc235", "inc241"], link: "https://www.google.com.br/maps/place/Venda+do+Chico+-+Três+Corações" },
     { name: "Carmópolis de Minas - MG",        keys: ["inc238", "inc239"], link: "https://www.google.com.br/maps/place/Eletroposto+Carmópolis+de+Minas" },
+    { name: "ServSul (Pouso Alegre - MG)",     keys: ["pc139", "pc141"], link: "#" },
     { name: "Posto Beija Flor - MG",           keys: ["inc237", "inc236"], link: "#" },
-    { name: "Aparecida - SP",                  keys: ["inc247", "inc248", "inc249"], link: "https://www.google.com.br/maps/place/Posto+Arco+Íris+Aparecida" },
-    { name: "Scherer Carregadores",            keys: ["pc129", "pc130", "pc131", "pc132"], link: "#" },
+    { name: "Lumus (Pará de Minas - MG)",      keys: ["pc111", "pc134"], link: "#" },
   ];
 
   const singles = [
     { name: "Santa Rita do Sapucaí - MG",         keys: ["pc025"], link: "https://www.google.com.br/maps/place/INCHARGE+Santa+Rita" },
-    { name: "Itajubá · ITACAR",                    keys: ["pc106", "pc128"], link: "https://www.google.com.br/maps/place/Itajubá+ITACAR" },
-    { name: "Lumus",                               keys: ["pc111", "pc134"], link: "#" },
-    { name: "Campo Belo - MG (Impacto Solar)",     keys: ["pc112"], link: "https://www.google.com.br/maps/place/Campo+Belo+MG" },
-    { name: "ServSul (Pouso Alegre - MG)",         keys: ["pc139", "pc141"], link: "#" },
+    { name: "Impacto Solar (Campo Belo - MG)",    keys: ["pc112"], link: "https://www.google.com.br/maps/place/Campo+Belo+MG" },
+    { name: "Itacar (Itajubá - MG)",               keys: ["pc106", "pc128"], link: "https://www.google.com.br/maps/place/Itajubá+ITACAR" },
+    { name: "Scherer Carregadores",                keys: ["pc129", "pc130", "pc131", "pc132"], link: "#" },
   ];
 
   const STATUS_LABEL = {
