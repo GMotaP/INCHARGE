@@ -15,8 +15,9 @@
     { name: "ServSul (Pouso Alegre - MG)",     keys: ["pc139", "pc141"], link: "#" },
     { name: "Posto Beija Flor - MG",           keys: ["inc237", "inc236"], link: "#" },
     { name: "Lumus (Pará de Minas - MG)",      keys: ["pc111", "pc134"], link: "#" },
-    { name: "Go Eletric 1",                    keys: ["Posto5120kWCCS2", "Cajamar03", "RiachoGrande120kW", "Farol48DC02", "Sorocaba120kW2"], link: "#" },
-    { name: "Go Eletric 2",                    keys: ["FarolCarreteiroI02", "Louveira1", "SRPQ5", "CacapavaDC1", "SuzanoDC1"], link: "#" },
+    { name: "Go Eletric",                      keys: ["POSTO5120", "Cajamar03", "RIACHOGRANDE120", "Farol48DC02"], link: "#" },
+    { name: "Go Eletric 2",                    keys: ["SOROCABA120", "FAROLCARRETEIRO02", "Louveira1"], link: "#" },
+    { name: "Go Eletric 3",                    keys: ["SRPQ5", "CacapavaDC1", "SuzanoDC1"], link: "#" },
   ];
 
   const singles = [
