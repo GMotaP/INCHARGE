@@ -16,11 +16,11 @@
     { name: "Posto Beija Flor - MG",           keys: ["inc237", "inc236"], link: "#" },
     { name: "GO Eletric 1",                    keys: ["CAJAMAR01", "CAJAMAR02", "CAJAMAR03", "CAJAMAR04"], link: "#" },
     { name: "GO Eletric 2",                    keys: ["LOUVEIRA1", "LOUVEIRA2", "LOUVEIRA3", "LOUVEIRA4"], link: "#" },
-    { name: "GO Eletric 3",                    keys: ["SRPQ1", "SRPQ2", "SRPQ5"], link: "#" },
+    { name: "GO Eletric 3",                    keys: ["SRPQ1", "SRPQ2", "SRPQ5", "FEPASA"], link: "#" },
     { name: "GO Eletric 4",                    keys: ["FAROL48DC01", "FAROL48DC02", "FAROLCARRETEIRO01", "FAROLCARRETEIRO02"], link: "#" },
     { name: "GO Eletric 5",                    keys: ["FAROLDUTRA01", "FAROLFERNAODIAS01", "POSTO5120", "RIACHOGRANDE120"], link: "#" },
     { name: "GO Eletric 6",                    keys: ["SOROCABA1", "SOROCABA2", "CACAPAVADC1", "SUZANODC1"], link: "#" },
-    { name: "GO Eletric 7",                    keys: ["HORTIFRUTIDC", "NEGREIROSDC", "POUPAKIDC", "FEPASA", "GACSANTAEMILIARIBEIRAO"], link: "#" },
+    { name: "GO Eletric 7",                    keys: ["HORTIFRUTIDC", "NEGREIROSDC", "POUPAKIDC", "GACSANTAEMILIARIBEIRAO"], link: "#" },
   ];
 
   const acGroups = [
