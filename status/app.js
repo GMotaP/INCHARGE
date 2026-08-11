@@ -15,9 +15,19 @@
     { name: "ServSul (Pouso Alegre - MG)",     keys: ["pc139", "pc141"], link: "#" },
     { name: "Posto Beija Flor - MG",           keys: ["inc237", "inc236"], link: "#" },
     { name: "Lumus (Pará de Minas - MG)",      keys: ["pc111", "pc134"], link: "#" },
-    { name: "Go Eletric",                      keys: ["POSTO5120", "Cajamar03", "RIACHOGRANDE120", "Farol48DC02"], link: "#" },
-    { name: "Go Eletric 2",                    keys: ["SOROCABA120", "FAROLCARRETEIRO02", "Louveira1"], link: "#" },
-    { name: "Go Eletric 3",                    keys: ["SRPQ5", "CacapavaDC1", "SuzanoDC1"], link: "#" },
+    { name: "GO Eletric 1",                    keys: ["POSTO5120", "CAJAMAR03", "RIACHOGRANDE120", "FAROL48DC02"], link: "#" },
+    { name: "GO Eletric 2",                    keys: ["SOROCABA2", "FAROLCARRETEIRO02", "LOUVEIRA1", "SRPQ5"], link: "#" },
+    { name: "GO Eletric 3",                    keys: ["CACAPAVADC1", "SUZANODC1", "SRPQ1", "SRPQ2"], link: "#" },
+    { name: "GO Eletric 4",                    keys: ["SRPQ3", "CAJAMAR01", "CAJAMAR02", "CAJAMAR04"], link: "#" },
+    { name: "GO Eletric 5",                    keys: ["FAROL48DC01", "FAROLCARRETEIRO01", "FAROLDUTRA01", "FAROLFERNAODIAS01"], link: "#" },
+    { name: "GO Eletric 6",                    keys: ["HORTIFRUTIDC", "LOUVEIRA2", "LOUVEIRA3", "LOUVEIRA4"], link: "#" },
+    { name: "GO Eletric 7",                    keys: ["SOROCABA1", "NEGREIROSDC", "POUPAKIDC"], link: "#" },
+  ];
+
+  const acGroups = [
+    { name: "GO Eletric AC 1",                 keys: ["FAROL48AC1", "FAROL48AC2", "HORTIFRUTIAC"], link: "#" },
+    { name: "GO Eletric AC 2",                 keys: ["POSTO57", "RIACHOGRANDE7", "NEGREIROSAC"], link: "#" },
+    { name: "GO Eletric AC 3",                 keys: ["POUPAKIAC", "FEPASA", "GACSANTAEMILIARIBEIRAO"], link: "#" },
   ];
 
   const singles = [
@@ -40,6 +50,7 @@
   const root = document.documentElement;
   const elKpis      = $("#kpis");
   const elLocations = $("#locations");
+  const elAcLocations = $("#ac-locations");
   const elSingles   = $("#singles");
   const elUpdated   = $("#last-update");
   const elLive      = $("#live-pill");
@@ -47,7 +58,7 @@
   const elBtnTheme  = $("#theme-toggle");
 
   // ── State ───────────────────────────────────────────────
-  let allKeys = [...cities.flatMap(c => c.keys), ...singles.flatMap(s => s.keys)];
+  let allKeys = [...cities.flatMap(c => c.keys), ...acGroups.flatMap(c => c.keys), ...singles.flatMap(s => s.keys)];
   let data = {};       // { key: [{ plug, status, online }, ...] }
   let details = {};    // { "key/plug": { percent, minutesTo80Percent, ... } }
   let lastFetchTs = 0; // ms epoch of last successful fetch
@@ -201,9 +212,9 @@
   }
 
   // ── Render: cities ──────────────────────────────────────
-  function renderCities() {
+  function renderLocationGroup(list, targetEl) {
     const frag = document.createDocumentFragment();
-    cities.forEach(city => {
+    list.forEach(city => {
       const stats = aggregate(city.keys);
 
       const head = el("div", { class: "city__head" },
@@ -231,8 +242,10 @@
 
       frag.append(el("article", { class: "city" }, head, body));
     });
-    elLocations.replaceChildren(frag);
+    targetEl.replaceChildren(frag);
   }
+  function renderCities() { renderLocationGroup(cities, elLocations); }
+  function renderAcGroups() { renderLocationGroup(acGroups, elAcLocations); }
 
   // ── Render: singles ─────────────────────────────────────
   function renderSingles() {
@@ -387,6 +400,7 @@
   function renderAll() {
     renderKpis(aggregate(allKeys));
     renderCities();
+    renderAcGroups();
     renderSingles();
   }
 
