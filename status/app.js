@@ -14,25 +14,25 @@
     { name: "Carmópolis de Minas - MG",        keys: ["inc238", "inc239"], link: "https://www.google.com.br/maps/place/Eletroposto+Carmópolis+de+Minas" },
     { name: "ServSul (Pouso Alegre - MG)",     keys: ["pc139", "pc141"], link: "#" },
     { name: "Posto Beija Flor - MG",           keys: ["inc237", "inc236"], link: "#" },
-    { name: "Lumus (Pará de Minas - MG)",      keys: ["pc111", "pc134"], link: "#" },
-    { name: "GO Eletric 1",                    keys: ["POSTO5120", "CAJAMAR03", "RIACHOGRANDE120", "FAROL48DC02"], link: "#" },
-    { name: "GO Eletric 2",                    keys: ["SOROCABA2", "FAROLCARRETEIRO02", "LOUVEIRA1", "SRPQ5"], link: "#" },
-    { name: "GO Eletric 3",                    keys: ["CACAPAVADC1", "SUZANODC1", "SRPQ1", "SRPQ2"], link: "#" },
-    { name: "GO Eletric 4",                    keys: ["SRPQ3", "CAJAMAR01", "CAJAMAR02", "CAJAMAR04"], link: "#" },
-    { name: "GO Eletric 5",                    keys: ["FAROL48DC01", "FAROLCARRETEIRO01", "FAROLDUTRA01", "FAROLFERNAODIAS01"], link: "#" },
-    { name: "GO Eletric 6",                    keys: ["HORTIFRUTIDC", "LOUVEIRA2", "LOUVEIRA3", "LOUVEIRA4"], link: "#" },
-    { name: "GO Eletric 7",                    keys: ["SOROCABA1", "NEGREIROSDC", "POUPAKIDC"], link: "#" },
+    { name: "GO Eletric 1",                    keys: ["CAJAMAR01", "CAJAMAR02", "CAJAMAR03", "CAJAMAR04"], link: "#" },
+    { name: "GO Eletric 2",                    keys: ["LOUVEIRA1", "LOUVEIRA2", "LOUVEIRA3", "LOUVEIRA4"], link: "#" },
+    { name: "GO Eletric 3",                    keys: ["SRPQ1", "SRPQ2", "SRPQ5"], link: "#" },
+    { name: "GO Eletric 4",                    keys: ["FAROL48DC01", "FAROL48DC02", "FAROLCARRETEIRO01", "FAROLCARRETEIRO02"], link: "#" },
+    { name: "GO Eletric 5",                    keys: ["FAROLDUTRA01", "FAROLFERNAODIAS01", "POSTO5120", "RIACHOGRANDE120"], link: "#" },
+    { name: "GO Eletric 6",                    keys: ["SOROCABA1", "SOROCABA2", "CACAPAVADC1", "SUZANODC1"], link: "#" },
+    { name: "GO Eletric 7",                    keys: ["HORTIFRUTIDC", "NEGREIROSDC", "POUPAKIDC", "FEPASA", "GACSANTAEMILIARIBEIRAO"], link: "#" },
   ];
 
   const acGroups = [
     { name: "GO Eletric AC 1",                 keys: ["FAROL48AC1", "FAROL48AC2", "HORTIFRUTIAC"], link: "#" },
-    { name: "GO Eletric AC 2",                 keys: ["POSTO57", "RIACHOGRANDE7", "NEGREIROSAC"], link: "#" },
-    { name: "GO Eletric AC 3",                 keys: ["POUPAKIAC", "FEPASA", "GACSANTAEMILIARIBEIRAO"], link: "#" },
+    { name: "GO Eletric AC 2",                 keys: ["POSTO57", "RIACHOGRANDE7", "SRPQ3"], link: "#" },
+    { name: "GO Eletric AC 3",                 keys: ["NEGREIROSAC", "POUPAKIAC"], link: "#" },
   ];
 
   const singles = [
     { name: "Santa Rita do Sapucaí - MG",         keys: ["pc025"], link: "https://www.google.com.br/maps/place/INCHARGE+Santa+Rita" },
     { name: "Impacto Solar (Campo Belo - MG)",    keys: ["pc112"], link: "https://www.google.com.br/maps/place/Campo+Belo+MG" },
+    { name: "Lumus (Pará de Minas - MG)",          keys: ["pc111", "pc134"], link: "#" },
     { name: "Itacar (Itajubá - MG)",               keys: ["pc106", "pc128"], link: "https://www.google.com.br/maps/place/Itajubá+ITACAR" },
     { name: "Scherer Carregadores",                keys: ["pc129", "pc130", "pc131", "pc132"], link: "#" },
   ];
