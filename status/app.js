@@ -23,12 +23,6 @@
     { name: "GO Eletric 7",                    keys: ["HORTIFRUTIDC", "NEGREIROSDC", "POUPAKIDC"], link: "#" },
   ];
 
-  const acGroups = [
-    { name: "GO Eletric AC 1",                 keys: ["FAROL48AC1", "FAROL48AC2", "HORTIFRUTIAC"], link: "#" },
-    { name: "GO Eletric AC 2",                 keys: ["POSTO57", "RIACHOGRANDE7", "SRPQ3"], link: "#" },
-    { name: "GO Eletric AC 3",                 keys: ["NEGREIROSAC", "POUPAKIAC", "CAJAMAR04"], link: "#" },
-  ];
-
   const singles = [
     { name: "Santa Rita do Sapucaí - MG",         keys: ["pc025"], link: "https://www.google.com.br/maps/place/INCHARGE+Santa+Rita" },
     { name: "Impacto Solar (Campo Belo - MG)",    keys: ["pc112"], link: "https://www.google.com.br/maps/place/Campo+Belo+MG" },
@@ -50,7 +44,6 @@
   const root = document.documentElement;
   const elKpis      = $("#kpis");
   const elLocations = $("#locations");
-  const elAcLocations = $("#ac-locations");
   const elSingles   = $("#singles");
   const elUpdated   = $("#last-update");
   const elLive      = $("#live-pill");
@@ -58,7 +51,7 @@
   const elBtnTheme  = $("#theme-toggle");
 
   // ── State ───────────────────────────────────────────────
-  let allKeys = [...cities.flatMap(c => c.keys), ...acGroups.flatMap(c => c.keys), ...singles.flatMap(s => s.keys)];
+  let allKeys = [...cities.flatMap(c => c.keys), ...singles.flatMap(s => s.keys)];
   let data = {};       // { key: [{ plug, status, online }, ...] }
   let details = {};    // { "key/plug": { percent, minutesTo80Percent, ... } }
   let lastFetchTs = 0; // ms epoch of last successful fetch
@@ -245,7 +238,6 @@
     targetEl.replaceChildren(frag);
   }
   function renderCities() { renderLocationGroup(cities, elLocations); }
-  function renderAcGroups() { renderLocationGroup(acGroups, elAcLocations); }
 
   // ── Render: singles ─────────────────────────────────────
   function renderSingles() {
@@ -400,7 +392,6 @@
   function renderAll() {
     renderKpis(aggregate(allKeys));
     renderCities();
-    renderAcGroups();
     renderSingles();
   }
 
