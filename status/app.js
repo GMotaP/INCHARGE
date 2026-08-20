@@ -34,7 +34,6 @@
     { name: "Impacto Solar (Campo Belo - MG)",    keys: ["pc112"], link: "https://www.google.com.br/maps/place/Campo+Belo+MG" },
     { name: "Lumus (Pará de Minas - MG)",          keys: ["pc111", "pc134"], link: "#" },
     { name: "Itacar (Itajubá - MG)",               keys: ["pc106", "pc128"], link: "https://www.google.com.br/maps/place/Itajubá+ITACAR" },
-    { name: "Scherer Carregadores",                keys: ["pc129", "pc130", "pc131", "pc132"], link: "#" },
   ];
 
   const STATUS_LABEL = {
