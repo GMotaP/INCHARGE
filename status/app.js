@@ -20,13 +20,13 @@
     { name: "Cajamar",                         keys: ["CAJAMAR01", "CAJAMAR02", "CAJAMAR03"], link: "#" },
     { name: "Louveira",                        keys: ["LOUVEIRA1", "LOUVEIRA2", "LOUVEIRA3"], link: "#" },
     { name: "Sorocaba",                        keys: ["SOROCABA1", "SOROCABA2"], link: "#" },
+    { name: "Posto 1030",                      keys: ["GO001", "GO002"], link: "#" },
     // Terceira linha
     { name: "Farol 48",                        keys: ["FAROL48DC01", "FAROL48DC02"], link: "#" },
     { name: "Farol Carreteiro",                keys: ["FAROLCARRETEIRO01", "FAROLCARRETEIRO02"], link: "#" },
     { name: "Farol Fernão Dias e Dutra",       keys: ["FAROLFERNAODIAS01", "FAROLDUTRA01"], link: "#" },
     { name: "Go Eletric 1",                    keys: ["POSTO5120", "NEGREIROSDC", "SUZANODC1", "RIACHOGRANDE120", "HORTIFRUTIDC"], link: "#" },
     { name: "Go Eletric 2",                    keys: ["FEPASA", "GACSANTAEMILIARIBEIRAO", "CACAPAVADC1", "POUPAKIDC"], link: "#" },
-    { name: "Posto 1030",                      keys: ["GO001", "GO002"], link: "#" },
   ];
 
   const singles = [
