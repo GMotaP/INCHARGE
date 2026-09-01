@@ -26,6 +26,7 @@
     { name: "Farol Fernão Dias e Dutra",       keys: ["FAROLFERNAODIAS01", "FAROLDUTRA01"], link: "#" },
     { name: "Go Eletric 1",                    keys: ["POSTO5120", "NEGREIROSDC", "SUZANODC1", "RIACHOGRANDE120", "HORTIFRUTIDC"], link: "#" },
     { name: "Go Eletric 2",                    keys: ["FEPASA", "GACSANTAEMILIARIBEIRAO", "CACAPAVADC1", "POUPAKIDC"], link: "#" },
+    { name: "Posto 1030",                      keys: ["GO001", "GO002"], link: "#" },
   ];
 
   const singles = [
